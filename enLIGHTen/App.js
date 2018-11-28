@@ -10,14 +10,21 @@ import {
   Button
 } from "react-native";
 import { WebBrowser } from "expo";
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import ModeScreen from './screens/ModeScreen';
+import CategoriesScreen from './screens/CategoriesScreen';
 
-export default class App extends React.Component {
+class HomeScreen extends React.Component {
+  // static navigationOptions = {
+  //   title: 'Welcome',
+  // };
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
 
            <TouchableOpacity style={styles.welcomeContainer} onPress={() => {
-              navigate("Links");
+              this.props.navigation.navigate('Mode')
             }}>
             <Image style={{height: 850, width: 430}}
               source={
@@ -32,12 +39,33 @@ export default class App extends React.Component {
   }
 }
 
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Mode: {
+    screen: ModeScreen
+  },
+  Categories: {
+    screen: CategoriesScreen
+  },
+  initialRouteName: "Home"
+});
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
+
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white"
   },
   contentContainer: {
-    paddingTop: 30
   },
   welcomeContainer: {
   },
