@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Image,
+  ImageBackground,
   Platform,
   ScrollView,
   StyleSheet,
@@ -17,13 +18,21 @@ export default class HelpScreen extends React.Component {
     return (
       <View style={styles.container}>
             <View style={styles.welcomeContainer}>
-            <Image style={{height: 750, width: 420}}
+          <ImageBackground
+              style={{height: 750, width: 420}}
               source={
                 require("../assets/help.png")
               }
-            
-            />
-             </View>
+            resizeMode="contain"
+          >
+        <TouchableOpacity onPress={() => {
+            }} style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Call for Help</Text>
+          </View>
+        </TouchableOpacity>
+          </ImageBackground>
+        </View>
        </View>
     );
   }
@@ -44,6 +53,8 @@ const styles = StyleSheet.create({
     marginLeft: -10
   },
    buttonContainer: {
+    marginTop: 500,
+    marginLeft: 100,
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -65,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   buttonText: {
-    color: 'black',
+    color: 'red',
     paddingBottom: 10,
   },
 });

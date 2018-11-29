@@ -17,7 +17,7 @@ import { WebBrowser } from "expo";
 export default class HelpButton extends React.Component {
   render() {
     return (
-      <Footer>
+      <Footer style={styles.container}>
           <TouchableOpacity onPress={() => {
               this.props.navigation.navigate('Help')
             }}>
