@@ -14,11 +14,11 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import ModeScreen from './screens/ModeScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import HelpScreen from './screens/HelpScreen';
+import HelpButton from './components/HelpButton'
+
 
 class HomeScreen extends React.Component {
-  // static navigationOptions = {
-  //   title: 'Welcome',
-  // };
+
   render() {
     const {navigate} = this.props.navigation;
     return (
@@ -32,16 +32,8 @@ class HomeScreen extends React.Component {
                 require("./assets/clouds.png")
               }
             />
-
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Help')
-            }}>
-          <View>
-            <Text>Not feeling well? Swipe up for help.</Text>
-          </View>
-        </TouchableOpacity>
-
+          <HelpButton />
       </View>
     );
   }

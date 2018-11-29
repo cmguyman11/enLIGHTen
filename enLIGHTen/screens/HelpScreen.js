@@ -17,16 +17,14 @@ export default class HelpScreen extends React.Component {
     const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
-
-           <View style={styles.welcomeContainer}>
-            <Image style={{height: 750, width: 420}}
-              source={
-                require("../assets/help.png")
-              }
-            
-            />
-
-            </View>
+    
+            <TouchableOpacity onPress={() => {
+              this.props.navigation.navigate('Help')
+            }}>
+          <View>
+            <Text>Not feeling well? Swipe up for help.</Text>
+          </View>
+        </TouchableOpacity>
 
       </View>
     );
