@@ -13,6 +13,7 @@ import { WebBrowser } from "expo";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import ModeScreen from './screens/ModeScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
+import HelpScreen from './screens/HelpScreen';
 
 class HomeScreen extends React.Component {
   // static navigationOptions = {
@@ -26,13 +27,20 @@ class HomeScreen extends React.Component {
            <TouchableOpacity style={styles.welcomeContainer} onPress={() => {
               this.props.navigation.navigate('Mode')
             }}>
-            <Image style={{height: 850, width: 430}}
+            <Image style={{height: 750, width: 430}}
               source={
                 require("./assets/clouds.png")
               }
             />
 
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+              this.props.navigation.navigate('Help')
+            }}>
+          <View>
+            <Text>Not feeling well? Swipe up for help.</Text>
+          </View>
+        </TouchableOpacity>
 
       </View>
     );
@@ -48,6 +56,9 @@ const AppNavigator = createStackNavigator({
   },
   Categories: {
     screen: CategoriesScreen
+  },
+  Help: {
+    screen: HelpScreen
   },
   initialRouteName: "Home"
 });
