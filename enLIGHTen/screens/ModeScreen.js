@@ -2,6 +2,7 @@ import React from 'react';
 import { WebBrowser } from "expo";
 import CategoriesScreen from './CategoriesScreen';
 import HelpButton from '../components/HelpButton'
+import { Content } from 'native-base';
 
 
 import { Alert, AppRegistry, Button, StyleSheet, View, ScrollView, TouchableOpacity, Text, Image  } from 'react-native';
@@ -10,8 +11,9 @@ import { Alert, AppRegistry, Button, StyleSheet, View, ScrollView, TouchableOpac
 export default class ModeScreen extends React.Component {
 
   render() {
-    const {navigate} = this.props.navigation;
+    const navigation = this.props.navigation;
     return (
+      <View style={styles.container}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
          <Image style={{width: 300, height: 300}}
@@ -36,8 +38,9 @@ export default class ModeScreen extends React.Component {
             <Text style={styles.buttonText}>multi player</Text>
           </View>
         </TouchableOpacity>
-       
-        </View> 
+        </View>
+        </View>
+        <HelpButton navigation={navigation}/>
       </View>
     );
   }

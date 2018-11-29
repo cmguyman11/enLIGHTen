@@ -9,9 +9,10 @@ export default class CategoriesScreen extends React.Component {
   }
 
   render() {
-    const {navigate} = this.props.navigation;
+    const navigation = this.props.navigation;
 
     return (
+      <View style={styles.container}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
          <Image style={{width: 400, height: 150}}
@@ -46,6 +47,8 @@ export default class CategoriesScreen extends React.Component {
         </TouchableOpacity>
        
         </View> 
+      </View>
+      <HelpButton navigation={navigation}/>
       </View>
     );
   }
