@@ -1,5 +1,6 @@
 import React from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, View, ScrollView, TouchableOpacity, Text, Image  } from 'react-native';
+import HelpButton from '../components/HelpButton'
 
 export default class CategoriesScreen extends React.Component {
 

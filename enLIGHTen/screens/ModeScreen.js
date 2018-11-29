@@ -1,18 +1,13 @@
 import React from 'react';
 import { WebBrowser } from "expo";
 import CategoriesScreen from './CategoriesScreen';
+import HelpButton from '../components/HelpButton'
 
 
 import { Alert, AppRegistry, Button, StyleSheet, View, ScrollView, TouchableOpacity, Text, Image  } from 'react-native';
 
-//import CategoryScreen from '../screens/ChooseCategoryScreen';
-
 
 export default class ModeScreen extends React.Component {
-
-  _onPressButton() {
-    Alert.alert('You tapped the button!')
-  }
 
   render() {
     const {navigate} = this.props.navigation;

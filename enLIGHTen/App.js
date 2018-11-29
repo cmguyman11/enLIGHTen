@@ -20,7 +20,7 @@ import HelpButton from './components/HelpButton'
 class HomeScreen extends React.Component {
 
   render() {
-    const {navigate} = this.props.navigation;
+    const navigation = this.props.navigation;
     return (
       <View style={styles.container}>
 
@@ -33,7 +33,7 @@ class HomeScreen extends React.Component {
               }
             />
             </TouchableOpacity>
-          <HelpButton />
+          <HelpButton navigation={navigation}/>
       </View>
     );
   }

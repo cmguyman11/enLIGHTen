@@ -14,19 +14,17 @@ import { WebBrowser } from "expo";
 
 export default class HelpScreen extends React.Component {
   render() {
-    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
-    
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Help')
-            }}>
-          <View>
-            <Text>Not feeling well? Swipe up for help.</Text>
-          </View>
-        </TouchableOpacity>
-
-      </View>
+            <View style={styles.welcomeContainer}>
+            <Image style={{height: 750, width: 420}}
+              source={
+                require("../assets/help.png")
+              }
+            
+            />
+             </View>
+       </View>
     );
   }
 }
