@@ -1,18 +1,17 @@
 import React from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, View, ScrollView, TouchableOpacity, Text, Image  } from 'react-native';
 import HelpButton from '../components/HelpButton'
+import VibeScreen from '../screens/VibeScreen'
+
 
 export default class CategoriesScreen extends React.Component {
 
-  _onPressButton() {
-    Alert.alert('You tapped the button!')
-  }
-
   render() {
     const navigation = this.props.navigation;
-
+    const mode = navigation.state.params.mode;
     return (
       <View style={styles.container}>
+      <View><Text>{mode}</Text></View>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
          <Image style={{width: 400, height: 150}}
@@ -22,25 +21,33 @@ export default class CategoriesScreen extends React.Component {
             />
           </View>
         <View style={styles.buttonContiner}>
-        <TouchableOpacity onPress={this._onPressButton}>
+        <TouchableOpacity onPress={() => {
+            this.props.navigation.navigate('Vibes', {mode: mode, category: "acedemic"})
+            }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>acedemic</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={this._onPressButton}>
+        <TouchableOpacity onPress={() => {
+            this.props.navigation.navigate('Vibes', {mode: mode, category: "people"})
+            }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>people</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={this._onPressButton}>
+        <TouchableOpacity onPress={() => {
+            this.props.navigation.navigate('Vibes', {mode: mode, category: "funny"})
+            }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>funny stuff</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={this._onPressButton}>
+        <TouchableOpacity onPress={() => {
+            this.props.navigation.navigate('Vibes', {mode: mode, category: "surprise"})
+            }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>surprise me</Text>
           </View>
@@ -48,7 +55,7 @@ export default class CategoriesScreen extends React.Component {
        
         </View> 
       </View>
-      <HelpButton navigation={navigation}/>
+            <HelpButton navigation={navigation}/>
       </View>
     );
   }

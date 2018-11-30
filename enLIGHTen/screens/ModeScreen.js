@@ -24,7 +24,7 @@ export default class ModeScreen extends React.Component {
           </View>
         <View style={styles.buttonContiner}>
         <TouchableOpacity onPress={() => {
-          this.props.navigation.navigate('Categories')
+          this.props.navigation.navigate('Categories', {mode: "single"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>single player</Text>
@@ -32,7 +32,7 @@ export default class ModeScreen extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {
-            this.props.navigation.navigate('Categories')
+            this.props.navigation.navigate('Categories', {mode: "multi"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>multi player</Text>

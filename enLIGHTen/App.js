@@ -14,6 +14,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import ModeScreen from './screens/ModeScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import HelpScreen from './screens/HelpScreen';
+import VibeScreen from './screens/VibeScreen';
 import HelpButton from './components/HelpButton'
 
 
@@ -51,6 +52,9 @@ const AppNavigator = createStackNavigator({
   },
   Help: {
     screen: HelpScreen
+  },
+  Vibes: {
+    screen: VibeScreen
   },
   initialRouteName: "Home"
 });
