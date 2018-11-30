@@ -21,9 +21,11 @@ export default class HelpButton extends React.Component {
           <TouchableOpacity onPress={() => {
               this.props.navigation.navigate('Help')
             }}>
-          <View>
-            <Text>Not feeling well? Swipe up for help.</Text>
-          </View>
+            <Image style={{height: 30, width: 415}}
+              source={
+                require("../assets/helpbutton.png")
+              }
+            />
         </TouchableOpacity>
         </Footer>
     );

@@ -11,6 +11,12 @@ import {
   Button
 } from "react-native";
 import { WebBrowser } from "expo";
+import call from 'react-native-phone-call'
+
+const args = {
+  number: '911', // String value with the number to call
+  prompt: false// Optional boolean property. Determines if the user should be prompt prior to the call 
+}
 
 
 export default class HelpScreen extends React.Component {
@@ -26,6 +32,7 @@ export default class HelpScreen extends React.Component {
             resizeMode="contain"
           >
         <TouchableOpacity onPress={() => {
+          call(args).catch(console.error)
             }} style={styles.buttonContainer}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Call for Help</Text>
