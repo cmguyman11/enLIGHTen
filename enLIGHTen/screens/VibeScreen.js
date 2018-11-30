@@ -10,6 +10,7 @@ import {
   View,
   Button
 } from "react-native";
+import { Slider } from 'react-native-elements'
 import { WebBrowser } from "expo";
 import HelpButton from '../components/HelpButton'
 
@@ -17,6 +18,7 @@ import HelpButton from '../components/HelpButton'
 export default class VibeScreen extends React.Component {
   render() {
       const navigation = this.props.navigation;
+      const value = 0.3;
     return (
       <View style={styles.container}>
       <View style={styles.container}>
@@ -28,6 +30,13 @@ export default class VibeScreen extends React.Component {
               }
             resizeMode="contain"
           >
+        <View style={styles.sliderStyle}>
+        <Slider
+          value={value}
+          onValueChange={(value) => {}} 
+          orientation="vertical"
+          thumbTintColor="white"/>
+      </View>
           </ImageBackground>
         </View>
        </View>
@@ -50,31 +59,13 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginLeft: -10
   },
-   buttonContainer: {
-    marginTop: 500,
-    marginLeft: 100,
-    flex: 2,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  button: {
-    padding: 20,
-    marginBottom: 30,
-    width: 200,
-    height: 80,
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderStyle: 'solid',
-    borderColor: 'black',
-    borderRadius: 4,
-    borderBottomWidth: 3,
-    borderBottomColor: 'grey',
-    borderWidth: 0.5,
-    textAlign: 'center',
-    borderRadius: 30,
-  },
-  buttonText: {
-    color: 'red',
-    paddingBottom: 10,
-  },
+  sliderStyle: {
+    flex: 1, 
+    alignItems: 'stretch', 
+    width: 420, 
+    justifyContent: 'center',
+    marginTop: 130,
+    marginLeft: 50,
+    color: "white"
+  }
 });

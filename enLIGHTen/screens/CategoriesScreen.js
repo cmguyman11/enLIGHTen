@@ -11,7 +11,6 @@ export default class CategoriesScreen extends React.Component {
     const mode = navigation.state.params.mode;
     return (
       <View style={styles.container}>
-      <View><Text>{mode}</Text></View>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
          <Image style={{width: 400, height: 150}}
