@@ -15,7 +15,9 @@ import ModeScreen from './screens/ModeScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import HelpScreen from './screens/HelpScreen';
 import VibeScreen from './screens/VibeScreen';
-import HelpButton from './components/HelpButton'
+import QuestionsScreen from './screens/QuestionsScreen';
+
+import HelpButton from './components/HelpButton';
 
 
 class HomeScreen extends React.Component {
@@ -55,6 +57,9 @@ const AppNavigator = createStackNavigator({
   },
   Vibes: {
     screen: VibeScreen
+  },
+  Questions: {
+    screen: QuestionsScreen
   },
   initialRouteName: "Home"
 });

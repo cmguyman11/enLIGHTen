@@ -37,6 +37,14 @@ export default class VibeScreen extends React.Component {
           orientation="vertical"
           thumbTintColor="white"/>
       </View>
+      <TouchableOpacity onPress={() => {
+              this.props.navigation.navigate('Questions')
+            }}>
+            <Image style={{height: 20, width: 50, marginLeft: 335, marginBottom: 73}}
+              source={
+                require("../assets/next.png")
+              }/>
+      </TouchableOpacity>
           </ImageBackground>
         </View>
        </View>
@@ -64,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch', 
     width: 420, 
     justifyContent: 'center',
-    marginTop: 130,
+    marginTop: 215,
     marginLeft: 50,
     color: "white"
   }
