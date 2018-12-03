@@ -54,7 +54,7 @@ export default class QuestionsScreen extends React.Component {
     return (
       <View style={styles.container}>
            <View style={styles.welcomeContainer}>
-              <ImageBackground style={{height: 650, width: 430}}
+              <ImageBackground style={{height: 650, width: 430, position: "absolute"}}
                 source={
                   require("../assets/questionsBackdrop.png")
                 }
@@ -77,21 +77,34 @@ export default class QuestionsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
+    display: "flex",
     flex: 1,
+    alignItems: "stretch",
   },
   welcomeContainer: {
-    flex: 1
+    flex: 1,
+    alignItems: "flex-end",
+    height: "100%",
+    width:"100%"
   },
   questionsContainer: {
-    flex: .1
+    display: "flex",
+    width: 200,
+    flexWrap: "wrap",
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 10,
+    paddingRight: 10
   },
   text: {
-    width: 600,
-    height: 400,
-    fontSize: 36,
+    fontSize: 30
   },
   nextContainer: {
-    flex: .2
+    position: "absolute",
+    marginTop: 700
+
   },
   imageStyle: {
     height: 20, 
