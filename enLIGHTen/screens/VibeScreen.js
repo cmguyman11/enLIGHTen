@@ -19,6 +19,8 @@ export default class VibeScreen extends React.Component {
   render() {
       const navigation = this.props.navigation;
       const value = 0.3;
+      const category = navigation.state.params.category;
+      const mode = navigation.state.params.mode;
     return (
       <View style={styles.container}>
       <View style={styles.container}>
@@ -38,7 +40,7 @@ export default class VibeScreen extends React.Component {
           thumbTintColor="white"/>
       </View>
       <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Questions')
+              this.props.navigation.navigate('Questions', {mode: mode, category: category})
             }}>
             <Image style={{height: 20, width: 50, marginLeft: 335, marginBottom: 73}}
               source={

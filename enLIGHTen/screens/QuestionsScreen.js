@@ -16,24 +16,40 @@ var HashMap = require('hashmap');
 
 import HelpButton from '../components/HelpButton';
 
+const statics = {
+    acedemic: ["Is what we perceive reality or just a construct of our minds? Can our minds correctly interpret reality, or is it subjective?", "What is the purpose of art?"],
+    people: ["Which of your friends or family members are you most like and why?", "How do you think you’ve changed in the last month or year?"],
+    funnyStuff: ["If you drop soap on the floor, is the floor clean or is the soap dirty?", "If you get out of the shower clean, then how does your towel get dirty?" ],
+    surprise: ["Do you think Aliens exist? If so, why haven’t they contacted us? If not, why?"],
+}
 
 export default class QuestionsScreen extends React.Component {
 
-  _nextQuestion(map) {
-    Alert.alert(map.get("funny")[0]);
+  constructor(props) {
+    super(props);
+    this._nextQuestion = this._nextQuestion.bind(this);
+    const category = this.props.navigation.state.params.category;
+    const mode = this.props.navigation.state.params.mode;
+    var map = new HashMap();
+    map.set("acedemic", statics.acedemic);
+    map.set("people", statics.people);
+    map.set("funny", statics.funnyStuff);
+    map.set("surprise", statics.surprise);
+    var questions = map.get(category);
+    var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
+    this.state = { question: nextQuestion, category: category, mode: mode, map: map };
+  }
+
+  _nextQuestion() {
+    var map = this.state.map;
+    var category = this.state.category;
+    var questions = map.get(category);
+    var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
+    this.setState(previousState => ({ question : nextQuestion}));
   }
 
   render() {
     const navigation = this.props.navigation;
-    var map = new HashMap();
-    const acedemic = ["Is what we perceive reality or just a construct of our minds? Can our minds correctly interpret reality, or is it subjective?", "What is the purpose of art?"];
-    const people = ["Which of your friends or family members are you most like and why?", "How do you think you’ve changed in the last month or year?"];
-    const funnyStuff = ["If you drop soap on the floor, is the floor clean or is the soap dirty?", "If you get out of the shower clean, then how does your towel get dirty?" ];
-    const surprise = ["Do you think Aliens exist? If so, why haven’t they contacted us? If not, why?"];
-    map.set("acedemic", acedemic);
-    map.set("people", people);
-    map.set("funny", funnyStuff);
-    map.set("surprise", surprise);
     return (
       <View style={styles.container}>
 
@@ -43,7 +59,8 @@ export default class QuestionsScreen extends React.Component {
                 require("../assets/questionsBackdrop.png")
               }
             />
-            <TouchableOpacity onPress={() => this._nextQuestion(map)}>
+            <View style={styles.questionsContainer}><Text>{this.state.question}</Text></View>
+            <TouchableOpacity onPress={this._nextQuestion}>
             <Image style={{height: 20, width: 50, marginLeft: 300, marginBottom: 73}}
               source={
                 require("../assets/next.png")
@@ -61,9 +78,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "white"
   },
-  contentContainer: {
-  },
-  welcomeContainer: {
+  questionsContainer: {
+    width: 350,
+    height: 30,
   },
   welcomeImage: {
     flex: 1,
