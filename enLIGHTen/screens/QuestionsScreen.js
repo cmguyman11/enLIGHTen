@@ -49,6 +49,23 @@ export default class QuestionsScreen extends React.Component {
     this.setState(previousState => ({ question : nextQuestion}));
   }
 
+  _addPlayer() {
+    //TODO add "curr player"
+    Alert.alert(
+  'Alert Title',
+  'My Alert Msg',
+  [
+    {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    {text: 'OK', onPress: () => console.log('OK Pressed')},
+  ],
+  { cancelable: false }
+);
+    var map = this.state.map;
+    var category = this.state.category;
+    this.props.navigation.navigate('AddPlayers', {mode: mode, category: category, player: ""});
+  }
+
   render() {
     const navigation = this.props.navigation;
     return (
@@ -59,9 +76,17 @@ export default class QuestionsScreen extends React.Component {
                   require("../assets/questionsBackdrop.png")
                 }
               />
+              <TouchableOpacity onPress={() => {
+                this.props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, player: ""})
+            }}>
+                <Image style={styles.addImageStyle}
+                  source={
+                    require("../assets/addPlayersButton.png")
+              }/>
+              </TouchableOpacity>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
-                <Image style={styles.imageStyle}
+                <Image style={styles.nextImageStyle}
                   source={
                     require("../assets/next.png")
                   }/>
@@ -103,11 +128,21 @@ const styles = StyleSheet.create({
   },
   nextContainer: {
     position: "absolute",
-    marginTop: 700
-
+    marginTop: 700,
+    marginRight: 25
   },
-  imageStyle: {
+  addPlayerContainer: {
+    position: "absolute",
+    marginTop: 5,
+  },
+  nextImageStyle: {
     height: 20, 
+    width: 50, 
+    marginLeft: 300, 
+    marginBottom: 73
+  },
+  addImageStyle: {
+    height: 50, 
     width: 50, 
     marginLeft: 300, 
     marginBottom: 73
