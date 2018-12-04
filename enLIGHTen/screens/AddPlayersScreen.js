@@ -54,6 +54,11 @@ export default class AddPlayerScreen extends React.Component {
   _addPlayers(player) {
     const text = "Adding " + player.name + " to the game..."
     this.setState(previousState => ({ text : text}));
+    setInterval(() => (
+      this.setState(previousState => (
+        { text: "" }
+      ))
+    ), 3000);
   }
 
   render() {
