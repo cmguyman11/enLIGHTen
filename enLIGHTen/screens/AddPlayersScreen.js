@@ -45,6 +45,20 @@ export default class AddPlayerScreen extends React.Component {
                   require("../assets/addPlayersBackdrop.png")
                 }
               />
+              <View style={styles.playersContainer}>
+              <TouchableOpacity onPress={this._addPlayer}>
+                <Image style={styles.playerIconStyle}
+                  source={
+                    require("../assets/catesIphone.png")
+                  }/>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={this._addPlayer}>
+                <Image style={styles.playerIconStyle}
+                  source={
+                    require("../assets/juliasIphone.png")
+                  }/>
+              </TouchableOpacity>
+              </View>
               <View style={styles.questionsContainer}><Text style={styles.text}>Adding {this.state.clickedPlayer} to the game...</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
                 <Image style={styles.imageStyle}
@@ -69,7 +83,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     flex: 1,
-    alignItems: "flex-end",
+    alignItems: "center",
     height: "100%",
     width:"100%"
   },
@@ -78,11 +92,23 @@ const styles = StyleSheet.create({
     width: 200,
     flexWrap: "wrap",
     width: "100%",
-    height: "100%",
+    marginTop: 100,
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
+  },
+  playersContainer: {
+    display: "flex",
+    width: 200,
+    flexWrap: "wrap",
+    width: "100%",
+    height: "20%",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginTop: 300,
   },
   text: {
     fontSize: 30
@@ -97,5 +123,10 @@ const styles = StyleSheet.create({
     width: 50, 
     marginLeft: 300, 
     marginBottom: 73
+  },
+  playerIconStyle: {
+    height: 100, 
+    width: 100, 
+    marginBottom: 150
   },
 });
