@@ -17,8 +17,28 @@ var HashMap = require('hashmap');
 
 import HelpButton from '../components/HelpButton';
 
-const statics = {
-  players: ["Julia", "Cate", "Sachi", "Graziella"]
+const players = [
+  {name: "Julia", image: require("../assets/juliasIphone.png")}, {name: "Cate", image: require("../assets/catesIphone.png")}, 
+]
+
+function Players(props) {
+  const content = players.map((player) =>
+    <View key={player.name}>
+    <TouchableOpacity onPress={() => {
+        props.func(player)
+      }}>
+      <Image style={styles.playerIconStyle}
+        source={
+          player.image
+        }/>
+    </TouchableOpacity>
+    </View>
+  );
+  return (
+    <View style={styles.playersContainer}>
+    {content}
+    </View>
+  );
 }
 
 export default class AddPlayerScreen extends React.Component {
@@ -28,11 +48,12 @@ export default class AddPlayerScreen extends React.Component {
     const category = this.props.navigation.state.params.category;
     const mode = this.props.navigation.state.params.mode;
     const player = this.props.navigation.state.params.player;
-    this.state = { currPlayer: player, clickedPlayer: "", category: category, mode: mode};
+    this.state = { currPlayer: player, text: "", category: category, mode: mode};
   }
 
-  _addPlayers() {
-    this.setState(previousState => ({ question : nextQuestion}));
+  _addPlayers(player) {
+    const text = "Adding " + player.name + " to the game..."
+    this.setState(previousState => ({ text : text}));
   }
 
   render() {
@@ -45,21 +66,8 @@ export default class AddPlayerScreen extends React.Component {
                   require("../assets/addPlayersBackdrop.png")
                 }
               />
-              <View style={styles.playersContainer}>
-              <TouchableOpacity onPress={this._addPlayer}>
-                <Image style={styles.playerIconStyle}
-                  source={
-                    require("../assets/catesIphone.png")
-                  }/>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={this._addPlayer}>
-                <Image style={styles.playerIconStyle}
-                  source={
-                    require("../assets/juliasIphone.png")
-                  }/>
-              </TouchableOpacity>
-              </View>
-              <View style={styles.questionsContainer}><Text style={styles.text}>Adding {this.state.clickedPlayer} to the game...</Text></View>
+              <Players func={this._addPlayers.bind(this)} hi="hi"/>
+              <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.text}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
                 <Image style={styles.imageStyle}
                   source={
