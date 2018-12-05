@@ -111,6 +111,7 @@ export default class QuestionsScreen extends React.Component {
                   require("../assets/questionsBackdrop.png")
                 }
               />
+              <View style={styles.iconsContainer}>
               <TouchableOpacity onPress={() => {
                 this.props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
             }}>
@@ -118,7 +119,16 @@ export default class QuestionsScreen extends React.Component {
                   source={
                     require("../assets/addPlayersButton.png")
               }/>
+           </TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+                this.props.navigation.navigate('ModeScreen')
+            }}>
+                <Image style={styles.homeStyle}
+                  source={
+                    require("../assets/homeIcon.png")
+              }/>
               </TouchableOpacity>
+              </View>
               <Players func={this._highlightPlayer.bind(this)} playersInGame={this.state.playersInGame} highlightedPlayer={this.state.highlightedPlayer}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
@@ -178,8 +188,10 @@ const styles = StyleSheet.create({
   addImageStyle: {
     height: 50, 
     width: 50, 
-    marginLeft: 300, 
-    marginBottom: 73
+  },
+  homeStyle: {
+    height: 40,
+    width: 40
   },
   playersContainer: {
     display: "flex",
@@ -191,7 +203,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 10,
-    marginTop: 15,
+    marginTop: 90,
+  },
+  iconsContainer: {
+    display: "flex",
+    width: 200,
+    flexWrap: "wrap",
+    width: "100%",
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   imageStyle: {
     height: 20, 
