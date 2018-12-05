@@ -44,7 +44,29 @@ function Players(props) {
   );
 }
 
+function PlayersAlreadyInGame(props) {
+  const currPlayers = allPlayers.filter(p => props.playersInGame.includes(p.name));
+  const content = currPlayers.map((player) =>
+    <View key={player.name}>
+    <TouchableOpacity onPress={() => {
+        props.func(player)
+      }}>
+      <Image style={styles.playerIconStyle}
+        source={
+          player.image
+        }/>
+    </TouchableOpacity>
+    </View>
+  );
+  return (
+    <View style={styles.playersInGameContainer}>
+    {content}
+    </View>
+  );
+}
+
 export default class AddPlayerScreen extends React.Component {
+
 
   constructor(props) {
     super(props);
@@ -54,6 +76,7 @@ export default class AddPlayerScreen extends React.Component {
     const playersInGame = this.props.navigation.state.params.playersInGame;
     this.state = {text: "", category: category, mode: mode, 
     playersInGame: playersInGame, playersOutOfGame: playersOutOfGame};
+
   }
 
   _addPlayers(player) {
@@ -79,6 +102,14 @@ export default class AddPlayerScreen extends React.Component {
                 }
               />
               <Players func={this._addPlayers.bind(this)} playersOutOfGame={this.state.playersOutOfGame}/>
+              <View style={{height: 50, width: "100%", marginLeft: 40}}>
+              <ImageBackground style={styles.playersInGameImageContainer}
+                source={
+                  require("../assets/currentPlayers.png")
+                }
+              />
+              <PlayersAlreadyInGame func={this._addPlayers.bind(this)} playersInGame={this.state.playersInGame}/>
+              </View>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.text}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={() => {
                   this.props.navigation.navigate('Questions', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
@@ -114,7 +145,6 @@ const styles = StyleSheet.create({
     width: 200,
     flexWrap: "wrap",
     width: "100%",
-    marginTop: 100,
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: 10,
@@ -132,13 +162,30 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     marginTop: 300,
   },
+  playersInGameImageContainer: {
+    resizeMode: "contain",
+    height: 200,
+    width: 400,
+    position: "absolute",
+  },
+  playersInGameContainer: {
+    display: "flex",
+    width: 200,
+    flexWrap: "wrap",
+    width: "100%",
+    height: "20%",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginTop: 200,
+  },
   text: {
     fontSize: 30
   },
   nextContainer: {
     position: "absolute",
     marginTop: 700
-
   },
   imageStyle: {
     height: 20, 
@@ -152,3 +199,4 @@ const styles = StyleSheet.create({
     marginBottom: 150
   },
 });
+
