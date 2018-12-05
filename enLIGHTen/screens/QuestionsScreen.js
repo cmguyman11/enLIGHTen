@@ -121,7 +121,7 @@ export default class QuestionsScreen extends React.Component {
               }/>
            </TouchableOpacity>
             <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('ModeScreen')
+                this.props.navigation.navigate('Mode')
             }}>
                 <Image style={styles.homeStyle}
                   source={
@@ -207,14 +207,14 @@ const styles = StyleSheet.create({
   },
   iconsContainer: {
     display: "flex",
-    width: 200,
     flexWrap: "wrap",
-    width: "100%",
+    width: 150,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 10,
+    marginLeft: 250,
   },
   imageStyle: {
     height: 20, 
