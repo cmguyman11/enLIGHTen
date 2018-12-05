@@ -55,18 +55,15 @@ export default class AddPlayerScreen extends React.Component {
   }
 
   _addPlayers(player) {
-    const text = "Adding " + player.name + " to the game..."
-    console.log(player.name)
-    console.log(this.state.playersOutOfGame)
+    const text = "Adding " + player.name + " to the game...";
     this.setState(prevState => ({
-        playersOutOfGame: prevState.playersOutOfGame.filter(p => p != player.name )
+        playersOutOfGame: (prevState.playersOutOfGame.filter(p => p != player.name )), playersInGame: prevState.playersInGame.concat(player.name), text: text
     }));
-    this.setState(previousState => ({ text : text}));
     setInterval(() => (
       this.setState(previousState => (
         { text: "" }
       ))
-    ), 3000);
+    ), 1000);
   }
 
   render() {
@@ -82,7 +79,7 @@ export default class AddPlayerScreen extends React.Component {
               <Players func={this._addPlayers.bind(this)} playersOutOfGame={this.state.playersOutOfGame}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.text}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={() => {
-                  this.props.navigation.navigate('Questions', {mode: this.state.mode, category: this.state.category})
+                  this.props.navigation.navigate('Questions', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
                 }}>
                 <Image style={styles.imageStyle}
                   source={
