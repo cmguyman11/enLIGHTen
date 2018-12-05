@@ -40,7 +40,7 @@ export default class VibeScreen extends React.Component {
           thumbTintColor="white"/>
       </View>
       <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Questions', {mode: mode, category: category, playersInGame:[], playersOutOfGame:["Julia", "Cate"]})
+              this.props.navigation.navigate('Questions', {mode: mode, category: category, playersInGame:["Sachi"], playersOutOfGame:["Julia", "Cate"], highlightedPlayer: "Sachi"})
             }}>
             <Image style={{height: 20, width: 50, marginLeft: 335, marginBottom: 73}}
               source={

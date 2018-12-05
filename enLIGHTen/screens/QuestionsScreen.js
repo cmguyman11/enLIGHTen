@@ -18,7 +18,9 @@ var HashMap = require('hashmap');
 import HelpButton from '../components/HelpButton';
 
 const allPlayers = [
-  {name: "Julia", image: require("../assets/juliasIphone.png")}, {name: "Cate", image: require("../assets/catesIphone.png")}, 
+  {name: "Julia", image: require("../assets/juliasIphone.png"), highlightedImage: require("../assets/juliasIphoneHighlighted.png")},
+  {name: "Cate", image: require("../assets/catesIphone.png"), highlightedImage: require("../assets/catesIphoneHighlighted.png")},
+  {name: "Sachi", image: require("../assets/sachisIphone.png"), highlightedImage: require("../assets/sachisIphoneHighlighted.png")},
 ]
 const statics = {
     acedemic: ["Is what we perceive reality or just a construct of our minds? Can our minds correctly interpret reality, or is it subjective?", "What is the purpose of art?", "What is the best way to explore human nature: psychology, philosophy, or biology?", "“Clear thinking requires courage rather than intelligence.” - Thomas Szasz. What do you think he’s saying? Do you agree?", "Did humans invent math, or did we discover it?", "What do you think are the benefits of capitalism? What are the downsides?", "Is what we perceive reality or just a construct of our minds? Can our minds correctly interpret reality, or is it subjective?" ],
@@ -32,11 +34,12 @@ function Players(props) {
   const content = currPlayers.map((player) =>
     <View key={player.name}>
     <TouchableOpacity onPress={() => {
+        props.func(player)
       }}>
       <Image style={styles.playerIconStyle}
-        source={
-          player.image
-        }/>
+  source={(props.highlightedPlayer == player.name)
+        ? player.highlightedImage
+        : player.image} />
     </TouchableOpacity>
     </View>
   );
@@ -51,6 +54,21 @@ export default class QuestionsScreen extends React.Component {
 
   constructor(props) {
     super(props);
+    this._nextQuestion = this._nextQuestion.bind(this);
+    const category = this.props.navigation.state.params.category;
+    const mode = this.props.navigation.state.params.mode;
+    const playersOutOfGame = this.props.navigation.state.params.playersOutOfGame;
+    const playersInGame = this.props.navigation.state.params.playersInGame;
+    const highlightedPlayer = this.props.navigation.state.params.highlightedPlayer;
+    console.log(highlightedPlayer);
+    var map = new HashMap();
+    map.set("acedemic", statics.acedemic);
+    map.set("people", statics.people);
+    map.set("funny", statics.funnyStuff);
+    map.set("surprise", statics.surprise);
+    var questions = map.get(category);
+    var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
+    this.state = { question: nextQuestion, category: category, mode: mode, map: map, playersInGame: playersInGame, playersOutOfGame: playersOutOfGame, highlightedPlayer: highlightedPlayer };
   }
 
   _nextQuestion() {
@@ -61,14 +79,22 @@ export default class QuestionsScreen extends React.Component {
     this.setState(previousState => ({ question : nextQuestion}));
   }
 
+  _highlightPlayer(player) {
+    console.log("setting state: " + player.name)
+    this.setState(prevState => ({
+      highlightedPlayer: player.name
+    }));
+  }
+
   render() {
     const navigation = this.props.navigation;
-        this._nextQuestion = this._nextQuestion.bind(this);
+    this._nextQuestion = this._nextQuestion.bind(this);
     const category = this.props.navigation.state.params.category;
     const mode = this.props.navigation.state.params.mode;
     const playersOutOfGame = this.props.navigation.state.params.playersOutOfGame;
     const playersInGame = this.props.navigation.state.params.playersInGame;
-    console.log(playersInGame);
+    const highlightedPlayer = (this.state.highlightedPlayer != null) ? this.state.highlightedPlayer : this.props.navigation.state.params.highlightedPlayer;
+    console.log(highlightedPlayer);
     var map = new HashMap();
     map.set("acedemic", statics.acedemic);
     map.set("people", statics.people);
@@ -76,7 +102,7 @@ export default class QuestionsScreen extends React.Component {
     map.set("surprise", statics.surprise);
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
-    this.state = { question: nextQuestion, category: category, mode: mode, map: map, playersInGame: playersInGame, playersOutOfGame: playersOutOfGame };
+    this.state = { question: nextQuestion, category: category, mode: mode, map: map, playersInGame: playersInGame, playersOutOfGame: playersOutOfGame, highlightedPlayer: highlightedPlayer };
     return (
       <View style={styles.container}>
            <View style={styles.welcomeContainer}>
@@ -93,7 +119,7 @@ export default class QuestionsScreen extends React.Component {
                     require("../assets/addPlayersButton.png")
               }/>
               </TouchableOpacity>
-              <Players playersInGame={this.state.playersInGame}/>
+              <Players func={this._highlightPlayer.bind(this)} playersInGame={this.state.playersInGame} highlightedPlayer={this.state.highlightedPlayer}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
                 <Image style={styles.nextImageStyle}
