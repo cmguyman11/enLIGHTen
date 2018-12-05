@@ -18,9 +18,9 @@ var HashMap = require('hashmap');
 import HelpButton from '../components/HelpButton';
 
 const allPlayers = [
-  {name: "Julia", image: require("../assets/juliasIphone.png"), highlightedImage: require("../assets/juliasIphoneHighlighted.png")},
-  {name: "Cate", image: require("../assets/catesIphone.png"), highlightedImage: require("../assets/catesIphoneHighlighted.png")},
-  {name: "Sachi", image: require("../assets/sachisIphone.png"), highlightedImage: require("../assets/sachisIphoneHighlighted.png")},
+  {name: "Julia", image: require("../assets/juliasIphoneAirdrop.png"), highlightedImage: require("../assets/juliasIphoneHighlighted.png")},
+  {name: "Cate", image: require("../assets/catesIphoneAirdrop.png"), highlightedImage: require("../assets/catesIphoneHighlighted.png")},
+  {name: "Sachi", image: require("../assets/sachisIphoneAirdrop.png"), highlightedImage: require("../assets/sachisIphoneHighlighted.png")},
 ]
 
 function Players(props) {
