@@ -15,7 +15,7 @@ import {
 export default class Timer extends React.Component {
   constructor() {
     super();
-    this.state = { time: {}, seconds: 5 };
+    this.state = { time: {}, seconds: 5, isCountingDown: false };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
@@ -47,6 +47,7 @@ export default class Timer extends React.Component {
     if (this.timer == 0 && this.state.seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
+    this.setState({ isCountingDown: true });
   }
 
   countDown() {
@@ -60,15 +61,37 @@ export default class Timer extends React.Component {
     // Check if we're at zero.
     if (seconds == 0) { 
       clearInterval(this.timer);
+      this.setState({ isCountingDown: false, seconds: 5 });
+      Alert.alert("Times up! Keep talking or click next question.");
     }
   }
 
+
   render() {
+    if (!this.state.isCountingDown) {
     return(
       <View>
-        <TouchableOpacity onPress={this.startTimer}><Text>press me</Text></TouchableOpacity>
-        <Text>m: {this.state.time.m} s: {this.state.time.s}</Text>
+        <TouchableOpacity onPress={this.startTimer}>
+            <Image style={styles.addImageStyle}
+              source={
+                require("../assets/timerIcon.png")
+          }/>
+       </TouchableOpacity>
       </View>
     );
+  } else {
+      return(
+      <View>
+        <Text> {this.state.time.m} : {this.state.time.s}</Text>
+      </View>
+      );
+    }
   }
 }
+
+const styles = StyleSheet.create({
+  addImageStyle: {
+    height: 45, 
+    width: 45, 
+  },
+});

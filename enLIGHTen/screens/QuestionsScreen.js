@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
   homeStyle: {
     height: 35,
     width: 35,
-    marginLeft: 16
+    marginRight: 10
   },
   playersContainer: {
     display: "flex",
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 10,
-    marginLeft: 245,
+    marginLeft: 150,
   },
   imageStyle: {
     height: 20, 
