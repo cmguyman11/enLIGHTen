@@ -16,6 +16,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 var HashMap = require('hashmap');
 
 import HelpButton from '../components/HelpButton';
+import Timer from '../components/Timer';
 
 const allPlayers = [
   {name: "Julia", image: require("../assets/juliasIphone.png"), highlightedImage: require("../assets/juliasIphoneHighlighted.png")},
@@ -112,6 +113,7 @@ export default class QuestionsScreen extends React.Component {
                 }
               />
               <View style={styles.iconsContainer}>
+              <Timer/>
               <TouchableOpacity onPress={() => {
                 this.props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
             }}>
