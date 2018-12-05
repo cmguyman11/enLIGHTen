@@ -128,6 +128,14 @@ export default class QuestionsScreen extends React.Component {
                     require("../assets/homeIcon.png")
               }/>
               </TouchableOpacity>
+              <TouchableOpacity onPress={() => {
+                this.props.navigation.navigate('Categories', {mode: this.state.mode})
+              }}>
+                <Image style={styles.homeStyle}
+                  source={
+                    require("../assets/settingsIcon.png")
+              }/>
+              </TouchableOpacity>
               </View>
               <Players func={this._highlightPlayer.bind(this)} playersInGame={this.state.playersInGame} highlightedPlayer={this.state.highlightedPlayer}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
@@ -190,8 +198,9 @@ const styles = StyleSheet.create({
     width: 50, 
   },
   homeStyle: {
-    height: 40,
-    width: 40
+    height: 35,
+    width: 35,
+    marginLeft: 16
   },
   playersContainer: {
     display: "flex",
@@ -214,7 +223,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 10,
-    marginLeft: 250,
+    marginLeft: 245,
   },
   imageStyle: {
     height: 20, 
