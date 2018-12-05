@@ -91,6 +91,18 @@ export default class AddPlayerScreen extends React.Component {
     ), 1000);
   }
 
+  _removePlayers(player) {
+    const text = "Removing " + player.name + " from the game...";
+    this.setState(prevState => ({
+        playersInGame: (prevState.playersInGame.filter(p => p != player.name )), playersOutOfGame: prevState.playersOutOfGame.concat(player.name), text: text
+    }));
+    setInterval(() => (
+      this.setState(previousState => (
+        { text: "" }
+      ))
+    ), 1000);
+  }
+
   render() {
     const navigation = this.props.navigation;
     return (
@@ -108,7 +120,7 @@ export default class AddPlayerScreen extends React.Component {
                   require("../assets/currentPlayers.png")
                 }
               />
-              <PlayersAlreadyInGame func={this._addPlayers.bind(this)} playersInGame={this.state.playersInGame}/>
+              <PlayersAlreadyInGame func={this._removePlayers.bind(this)} playersInGame={this.state.playersInGame}/>
               </View>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.text}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={() => {
