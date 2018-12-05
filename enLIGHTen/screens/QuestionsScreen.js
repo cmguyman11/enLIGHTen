@@ -31,6 +31,8 @@ export default class QuestionsScreen extends React.Component {
     this._nextQuestion = this._nextQuestion.bind(this);
     const category = this.props.navigation.state.params.category;
     const mode = this.props.navigation.state.params.mode;
+    const playersOutOfGame = this.props.navigation.state.params.playersOutOfGame;
+    const playersInGame = this.props.navigation.state.params.playersInGame;
     var map = new HashMap();
     map.set("acedemic", statics.acedemic);
     map.set("people", statics.people);
@@ -38,7 +40,7 @@ export default class QuestionsScreen extends React.Component {
     map.set("surprise", statics.surprise);
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
-    this.state = { question: nextQuestion, category: category, mode: mode, map: map };
+    this.state = { question: nextQuestion, category: category, mode: mode, map: map, playersInGame: playersInGame, playersOutOfGame: playersOutOfGame };
   }
 
   _nextQuestion() {
@@ -47,23 +49,6 @@ export default class QuestionsScreen extends React.Component {
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
     this.setState(previousState => ({ question : nextQuestion}));
-  }
-
-  _addPlayer() {
-    //TODO add "curr player"
-    Alert.alert(
-  'Alert Title',
-  'My Alert Msg',
-  [
-    {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-    {text: 'OK', onPress: () => console.log('OK Pressed')},
-  ],
-  { cancelable: false }
-);
-    var map = this.state.map;
-    var category = this.state.category;
-    this.props.navigation.navigate('AddPlayers', {mode: mode, category: category, player: ""});
   }
 
   render() {
@@ -77,7 +62,7 @@ export default class QuestionsScreen extends React.Component {
                 }
               />
               <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, player: ""})
+                this.props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
             }}>
                 <Image style={styles.addImageStyle}
                   source={

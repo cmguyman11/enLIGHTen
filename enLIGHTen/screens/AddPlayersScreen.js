@@ -17,12 +17,13 @@ var HashMap = require('hashmap');
 
 import HelpButton from '../components/HelpButton';
 
-const players = [
+const allPlayers = [
   {name: "Julia", image: require("../assets/juliasIphone.png")}, {name: "Cate", image: require("../assets/catesIphone.png")}, 
 ]
 
 function Players(props) {
-  const content = players.map((player) =>
+  const currPlayers = allPlayers.filter(p => props.playersOutOfGame.includes(p.name));
+  const content = currPlayers.map((player) =>
     <View key={player.name}>
     <TouchableOpacity onPress={() => {
         props.func(player)
@@ -47,12 +48,19 @@ export default class AddPlayerScreen extends React.Component {
     super(props);
     const category = this.props.navigation.state.params.category;
     const mode = this.props.navigation.state.params.mode;
-    const player = this.props.navigation.state.params.player;
-    this.state = { currPlayer: player, text: "", category: category, mode: mode};
+    const playersOutOfGame = this.props.navigation.state.params.playersOutOfGame;
+    const playersInGame = this.props.navigation.state.params.playersInGame;
+    this.state = {text: "", category: category, mode: mode, 
+    playersInGame: playersInGame, playersOutOfGame: playersOutOfGame};
   }
 
   _addPlayers(player) {
     const text = "Adding " + player.name + " to the game..."
+    console.log(player.name)
+    console.log(this.state.playersOutOfGame)
+    this.setState(prevState => ({
+        playersOutOfGame: prevState.playersOutOfGame.filter(p => p != player.name )
+    }));
     this.setState(previousState => ({ text : text}));
     setInterval(() => (
       this.setState(previousState => (
@@ -71,9 +79,11 @@ export default class AddPlayerScreen extends React.Component {
                   require("../assets/addPlayersBackdrop.png")
                 }
               />
-              <Players func={this._addPlayers.bind(this)} hi="hi"/>
+              <Players func={this._addPlayers.bind(this)} playersOutOfGame={this.state.playersOutOfGame}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.text}</Text></View>
-              <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
+              <TouchableOpacity style={styles.nextContainer} onPress={() => {
+                  this.props.navigation.navigate('Questions', {mode: this.state.mode, category: this.state.category})
+                }}>
                 <Image style={styles.imageStyle}
                   source={
                     require("../assets/next.png")
