@@ -48,7 +48,7 @@ export default class VibeScreen extends React.Component {
               } else if (func == "voice") {
 
               } else if (func == "notepad") {
-                this.props.navigation.navigate('Notepad');
+                this.props.navigation.navigate('Notepad', {category: category});
               }
             }}>
             <Image style={{height: 20, width: 50, marginLeft: 335, marginBottom: 73}}
