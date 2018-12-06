@@ -13,7 +13,8 @@ import {
   Button,
   Alert,
   ImageBackground,
-  TextInput
+  TextInput,
+  Animated
 } from "react-native";
 var HashMap = require('hashmap');
 
@@ -26,9 +27,11 @@ const statics = {
 
 export default class RecordingScreen extends React.Component {
 
+
   constructor(props) {
     super(props);
     this._nextQuestion = this._nextQuestion.bind(this);
+    this.__showAnimation = this.__showAnimation.bind(this);
     const category = this.props.navigation.state.params.category;
     var map = new HashMap();
     map.set("acedemic", statics.acedemic);
@@ -37,9 +40,12 @@ export default class RecordingScreen extends React.Component {
     map.set("surprise", statics.surprise);
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
-    this.state = { question: nextQuestion, category: category, map: map, text: "" };
+    this.state = { question: nextQuestion, category: category, map: map, text: "", anim: new Animated.Value(1)};
   }
 
+  animationState = {
+    fadeAnim: new Animated.Value(0)  // Initial value for opacity: 0
+  }
 
   _nextQuestion() {
     var map = this.state.map;
@@ -53,12 +59,19 @@ export default class RecordingScreen extends React.Component {
   	Alert.alert("Response saved!");
   }
 
-  _showAnimaition() {
-
+  __showAnimation() {
+    Animated.timing(
+      this.state.anim,
+      {
+        toValue: 400,
+        duration: 2000,
+      }
+    ).start();  
   }
 
   render() {
     const navigation = this.props.navigation;
+    let { anim } = this.state.anim;
     return (
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>
@@ -76,11 +89,17 @@ export default class RecordingScreen extends React.Component {
               }/>
           </TouchableOpacity>
           <View style={{height: 150, marginTop: 30}}>
-            <Image style={{height: 120}}
+            <ImageBackground style={{height: 120}}
               source={
                 require("../assets/recording.png")
               }/>
-            <TouchableOpacity style={{marginTop: 10, marginLeft: 180}} onPress={this.__showAnimaition}>
+              <Animated.View style={{marginTop: 5, position: "absolute", left: this.state.anim}}>
+                <Image style={{width: 10, height: 100}}
+                source={ 
+                  require("../assets/blueLine.png")
+                }/>
+              </Animated.View>
+            <TouchableOpacity style={{marginTop: 10, marginLeft: 180}} onPress={this.__showAnimation}>
             <Image style={{width: 50, height: 50}}
               source={
                 require("../assets/recordIcon.png")
