@@ -16,6 +16,8 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 var HashMap = require('hashmap');
 
 import HelpButton from '../components/HelpButton';
+import NavBar from '../components/NavBar';
+
 import Timer from '../components/Timer';
 
 const allPlayers = [
@@ -112,33 +114,7 @@ export default class QuestionsScreen extends React.Component {
                   require("../assets/questionsBackdrop.png")
                 }
               />
-              <View style={styles.iconsContainer}>
-              <Timer isRecordingsScreen={false}/>
-              <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
-            }}>
-                <Image style={styles.addImageStyle}
-                  source={
-                    require("../assets/addPlayersButton.png")
-              }/>
-           </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('Mode')
-            }}>
-                <Image style={styles.homeStyle}
-                  source={
-                    require("../assets/homeIcon.png")
-              }/>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('Categories', {mode: this.state.mode})
-              }}>
-                <Image style={styles.homeStyle}
-                  source={
-                    require("../assets/settingsIcon.png")
-              }/>
-              </TouchableOpacity>
-              </View>
+              <NavBar navigation={navigation}/>
               <Players func={this._highlightPlayer.bind(this)} playersInGame={this.state.playersInGame} highlightedPlayer={this.state.highlightedPlayer}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>

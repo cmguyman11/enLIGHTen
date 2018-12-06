@@ -1,6 +1,8 @@
 import React from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, View, ScrollView, TouchableOpacity, Text, Image  } from 'react-native';
 import HelpButton from '../components/HelpButton'
+import NavBar from '../components/NavBar'
+
 import VibeScreen from '../screens/VibeScreen'
 
 
@@ -13,6 +15,7 @@ export default class CategoriesScreen extends React.Component {
     return (
       <View style={styles.container}>
       <View style={styles.container}>
+      <NavBar navigation={navigation}/>
         <View style={styles.imageContainer}>
          <Image style={{width: 400, height: 150}}
               source={
@@ -95,5 +98,5 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: .6,
-  }
+  },
 });
