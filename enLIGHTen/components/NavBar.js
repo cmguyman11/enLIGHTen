@@ -41,10 +41,10 @@ function Home(props) {
 }
 
 function Settings(props) {
-  if (props.page != "LetsPlay" && props.page != "Mode" && props.page != "Vibe" && props.page != "RecordThoughts") {
+  if (props.page != "Category" && props.page != "Mode" && props.page != "Vibe" && props.page != "RecordThoughts") {
       return (
         <TouchableOpacity onPress={() => {
-          props.navigation.navigate('Categories', {mode: this.state.mode})
+          props.navigation.navigate('Categories', {mode: props.mode})
         }}>
           <Image style={styles.homeStyle}
             source={
@@ -109,7 +109,7 @@ export default class NavBar extends React.Component {
           <TimerIcon page={page}/>
           <AddPlayers page={page} mode={mode} navigation={navigation} category={category} playersOutOfGame={playersOutOfGame} playersInGame={playersInGame}/>
            <Home page={page} navigation={navigation}/>
-           <Settings page={page} navigation={navigation}/>
+           <Settings page={page} navigation={navigation} mode={mode}/>
           </View>
         </View>
     );

@@ -109,7 +109,7 @@ export default class RecordingScreen extends React.Component {
     let { anim } = this.state.anim;
     return (
       <View style={styles.container}>
-        <NavBar navigation={navigation} page={"Questions"} mode={""} category={""} playersOutOfGame={""} playersInGame={""}/>
+        <NavBar navigation={navigation} page={"Questions"} mode={this.state.mode} category={this.state.category} playersOutOfGame={""} playersInGame={""}/>
         <View style={styles.welcomeContainer}>
           <ImageBackground style={{height: 750, width: 430, position: "absolute"}}
             source={

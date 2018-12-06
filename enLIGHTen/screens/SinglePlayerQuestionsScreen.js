@@ -115,25 +115,6 @@ export default class QuestionsScreen extends React.Component {
                   require("../assets/questionsBackdrop.png")
                 }
               />
-              <View style={styles.iconsContainer}>
-              <Timer/>
-            <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('Mode')
-            }}>
-                <Image style={styles.homeStyle}
-                  source={
-                    require("../assets/homeIcon.png")
-              }/>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('Categories', {mode: this.state.mode})
-              }}>
-                <Image style={styles.homeStyle}
-                  source={
-                    require("../assets/settingsIcon.png")
-              }/>
-              </TouchableOpacity>
-              </View>
               <Players func={this._highlightPlayer.bind(this)} playersInGame={this.state.playersInGame} highlightedPlayer={this.state.highlightedPlayer}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>

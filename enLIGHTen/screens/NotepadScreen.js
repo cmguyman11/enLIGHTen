@@ -59,7 +59,7 @@ export default class NotepadScreen extends React.Component {
     const navigation = this.props.navigation;
     return (
       <View style={styles.container}>
-        <NavBar navigation={navigation} page={"Notepad"} mode={mode} category={""} playersOutOfGame={""} playersInGame={""}/>
+        <NavBar navigation={navigation} page={"Notepad"} mode={this.state.mode} category={this.state.category} playersOutOfGame={""} playersInGame={""}/>
         <View style={styles.welcomeContainer}>
           <ImageBackground style={{height: 750, width: 430, position: "absolute"}}
             source={
