@@ -12,7 +12,8 @@ import {
   View,
   Button,
   Alert,
-  ImageBackground
+  ImageBackground,
+  TextInput
 } from "react-native";
 var HashMap = require('hashmap');
 
@@ -36,7 +37,7 @@ export default class NotepadScreen extends React.Component {
     map.set("surprise", statics.surprise);
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
-    this.state = { question: nextQuestion, category: category, map: map };
+    this.state = { question: nextQuestion, category: category, map: map, text: "hello!" };
   }
 
 
@@ -53,21 +54,22 @@ export default class NotepadScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>
-          <ImageBackground style={{height: 800, width: 430, position: "absolute"}}
+          <ImageBackground style={{height: 750, width: 430, position: "absolute"}}
             source={
               require("../assets/notepadBackdrop.png")
             }
           />
           <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
-          <TouchableOpacity style={styles.welcomeContainer} onPress={() => {
-
-            }}>
-            <Image style={{height: 400, width: 300, marginTop: 180, marginLeft: 50}}
-              source={
-                require("../assets/notepad.png")
-              }
-            />
-            </TouchableOpacity>
+          <View>
+          <TextInput 
+          style={{height: 600, width: 300, borderWidth: 0, marginTop: 75, marginLeft: 50}} 
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+         multiline = {true}
+         numberOfLines = {10}
+         editable={true}>
+            </TextInput>
+         </View>
           <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
             <Image style={styles.nextImageStyle}
               source={
@@ -80,6 +82,7 @@ export default class NotepadScreen extends React.Component {
     );
   }
 }
+
 
 
 const styles = StyleSheet.create({
@@ -97,12 +100,13 @@ const styles = StyleSheet.create({
   questionsContainer: {
     display: "flex",
     width: 200,
+    height: 210,
     flexWrap: "wrap",
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
   },
   text: {
     fontSize: 30
