@@ -46,7 +46,7 @@ export default class VibeScreen extends React.Component {
               } else if (func == "questions") {
                   this.props.navigation.navigate('SinglePlayerQuestions', {mode: mode, category: category, playersInGame:["Sachi"], playersOutOfGame:["Julia", "Cate"], highlightedPlayer: "Sachi"})
               } else if (func == "voice") {
-
+                    this.props.navigation.navigate('Recording', {category: category});
               } else if (func == "notepad") {
                 this.props.navigation.navigate('Notepad', {category: category});
               }

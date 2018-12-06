@@ -20,6 +20,7 @@ import QuestionsScreen from './screens/QuestionsScreen';
 import SinglePlayerQuestionsScreen from './screens/SinglePlayerQuestionsScreen';
 import AddPlayersScreen from './screens/AddPlayersScreen';
 import NotepadScreen from './screens/NotepadScreen';
+import RecordingScreen from './screens/RecordingScreen';
 
 
 import HelpButton from './components/HelpButton';
@@ -77,6 +78,9 @@ const AppNavigator = createStackNavigator({
   },
   Notepad: {
     screen: NotepadScreen
+  },
+  Recording: {
+    screen: RecordingScreen
   },
   initialRouteName: "Home"
 });
