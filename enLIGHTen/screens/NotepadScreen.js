@@ -37,7 +37,7 @@ export default class NotepadScreen extends React.Component {
     map.set("surprise", statics.surprise);
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
-    this.state = { question: nextQuestion, category: category, map: map, text: "hello!" };
+    this.state = { question: nextQuestion, category: category, map: map, text: "" };
   }
 
 
@@ -47,6 +47,10 @@ export default class NotepadScreen extends React.Component {
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
     this.setState(previousState => ({ question : nextQuestion}));
+  }
+
+  _saveResponse() {
+  	Alert.alert("Response saved!");
   }
 
   render() {
@@ -61,13 +65,20 @@ export default class NotepadScreen extends React.Component {
           />
           <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
           <View>
+           <TouchableOpacity style={{marginTop: 20, marginLeft: 300}} onPress={this._saveResponse}>
+            <Image style={styles.addImageStyle}
+              source={
+                require("../assets/saveIcon.png")
+              }/>
+          </TouchableOpacity>
           <TextInput 
-          style={{height: 600, width: 300, borderWidth: 0, marginTop: 75, marginLeft: 50}} 
+          style={{height: 600, width: 300, borderWidth: 0, marginTop: 50, marginLeft: 50}} 
           onChangeText={(text) => this.setState({text})}
           value={this.state.text}
          multiline = {true}
          numberOfLines = {10}
-         editable={true}>
+         editable={true}
+         placeholder="Type some thoughts...">
             </TextInput>
          </View>
           <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
@@ -127,8 +138,8 @@ const styles = StyleSheet.create({
     marginBottom: 73
   },
   addImageStyle: {
-    height: 50, 
-    width: 50, 
+    height: 40, 
+    width: 40, 
   },
   homeStyle: {
     height: 35,

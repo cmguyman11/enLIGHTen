@@ -74,33 +74,25 @@ export default class AddPlayerScreen extends React.Component {
     const mode = this.props.navigation.state.params.mode;
     const playersOutOfGame = this.props.navigation.state.params.playersOutOfGame;
     const playersInGame = this.props.navigation.state.params.playersInGame;
-    this.state = {text: "", category: category, mode: mode, 
+    this.state = {category: category, mode: mode, 
     playersInGame: playersInGame, playersOutOfGame: playersOutOfGame};
 
   }
 
   _addPlayers(player) {
-    const text = "Adding " + player.name + " to the game...";
+    const text = "Added " + player.name + " to the game!";
     this.setState(prevState => ({
-        playersOutOfGame: (prevState.playersOutOfGame.filter(p => p != player.name )), playersInGame: prevState.playersInGame.concat(player.name), text: text
+        playersOutOfGame: (prevState.playersOutOfGame.filter(p => p != player.name )), playersInGame: prevState.playersInGame.concat(player.name)
     }));
-    setInterval(() => (
-      this.setState(previousState => (
-        { text: "" }
-      ))
-    ), 1000);
+    Alert.alert(text);
   }
 
   _removePlayers(player) {
-    const text = "Removing " + player.name + " from the game...";
+    const text = "Removed " + player.name + " from the game!";
     this.setState(prevState => ({
-        playersInGame: (prevState.playersInGame.filter(p => p != player.name )), playersOutOfGame: prevState.playersOutOfGame.concat(player.name), text: text
+        playersInGame: (prevState.playersInGame.filter(p => p != player.name )), playersOutOfGame: prevState.playersOutOfGame.concat(player.name)
     }));
-    setInterval(() => (
-      this.setState(previousState => (
-        { text: "" }
-      ))
-    ), 1000);
+    Alert.alert(text);
   }
 
   render() {
