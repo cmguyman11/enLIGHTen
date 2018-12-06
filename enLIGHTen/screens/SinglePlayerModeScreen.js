@@ -8,7 +8,7 @@ import { Content } from 'native-base';
 import { Alert, AppRegistry, Button, StyleSheet, View, ScrollView, TouchableOpacity, Text, Image  } from 'react-native';
 
 
-export default class ModeScreen extends React.Component {
+export default class SinglePlayerModeScreen extends React.Component {
 
   render() {
     const navigation = this.props.navigation;
@@ -16,18 +16,18 @@ export default class ModeScreen extends React.Component {
       <View style={styles.container}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-         <Image style={{width: 300, height: 300}}
+         <Image style={{width: 300, height: 130, marginTop: 100}}
               source={
-                require("../assets/letsPlay.png")
+                require("../assets/recordThoughts.png")
               }
             />
           </View>
         <View style={styles.buttonContiner}>
         <TouchableOpacity onPress={() => {
-          this.props.navigation.navigate('SinglePlayerMode', {mode: "single"})
+          this.props.navigation.navigate('Categories', {mode: "single"})
             }}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>single player</Text>
+            <Text style={styles.buttonText}>notepad</Text>
           </View>
         </TouchableOpacity>
 
@@ -35,7 +35,14 @@ export default class ModeScreen extends React.Component {
             this.props.navigation.navigate('Categories', {mode: "multi"})
             }}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>multi player</Text>
+            <Text style={styles.buttonText}>voice memo</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+            this.props.navigation.navigate('Categories', {mode: "multi"})
+            }}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>just the questions!</Text>
           </View>
         </TouchableOpacity>
         </View>

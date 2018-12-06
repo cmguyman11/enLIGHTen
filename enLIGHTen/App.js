@@ -12,6 +12,7 @@ import {
 import { WebBrowser } from "expo";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import ModeScreen from './screens/ModeScreen';
+import SinglePlayerModeScreen from './screens/SinglePlayerModeScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import HelpScreen from './screens/HelpScreen';
 import VibeScreen from './screens/VibeScreen';
@@ -64,6 +65,9 @@ const AppNavigator = createStackNavigator({
   },
   AddPlayers: {
     screen: AddPlayersScreen
+  },
+  SinglePlayerMode: {
+    screen: SinglePlayerModeScreen
   },
   initialRouteName: "Home"
 });
