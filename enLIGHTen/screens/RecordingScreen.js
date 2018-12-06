@@ -71,7 +71,7 @@ export default class RecordingScreen extends React.Component {
   }
 
   _saveResponse() {
-  	Alert.alert("Response saved!");
+  	Alert.alert();
   }
 
   __showAnimation() {
@@ -94,6 +94,7 @@ export default class RecordingScreen extends React.Component {
         duration: 1,
       }
     ).start();
+    Alert.alert("Response saved as \"Todays Thoughts\"!");
     this.setState(previousState => ({ recordedNote: true}));
     }
   }
