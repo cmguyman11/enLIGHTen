@@ -15,7 +15,7 @@ export default class CategoriesScreen extends React.Component {
     return (
       <View style={styles.container}>
       <View style={styles.container}>
-      <NavBar navigation={navigation}/>
+        <NavBar navigation={navigation} page={"Category"} mode={mode} category={""} playersOutOfGame={""} playersInGame={""}/>
         <View style={styles.imageContainer}>
          <Image style={{width: 400, height: 150}}
               source={
@@ -58,7 +58,7 @@ export default class CategoriesScreen extends React.Component {
        
         </View> 
       </View>
-            <HelpButton navigation={navigation}/>
+      <HelpButton navigation={navigation}/>
       </View>
     );
   }

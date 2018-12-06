@@ -1,6 +1,8 @@
 import React from 'react';
 import { WebBrowser } from "expo";
 import HelpButton from '../components/HelpButton'
+import NavBar from '../components/NavBar';
+
 import { Content } from 'native-base';
 import {
   Image,
@@ -57,6 +59,7 @@ export default class NotepadScreen extends React.Component {
     const navigation = this.props.navigation;
     return (
       <View style={styles.container}>
+        <NavBar navigation={navigation} page={"Notepad"} mode={mode} category={""} playersOutOfGame={""} playersInGame={""}/>
         <View style={styles.welcomeContainer}>
           <ImageBackground style={{height: 750, width: 430, position: "absolute"}}
             source={

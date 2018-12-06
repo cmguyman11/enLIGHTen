@@ -1,6 +1,8 @@
 import React from 'react';
 import { WebBrowser } from "expo";
 import HelpButton from '../components/HelpButton'
+import NavBar from '../components/NavBar';
+
 import { Content } from 'native-base';
 import {
   Image,
@@ -107,6 +109,7 @@ export default class RecordingScreen extends React.Component {
     let { anim } = this.state.anim;
     return (
       <View style={styles.container}>
+        <NavBar navigation={navigation} page={"Questions"} mode={""} category={""} playersOutOfGame={""} playersInGame={""}/>
         <View style={styles.welcomeContainer}>
           <ImageBackground style={{height: 750, width: 430, position: "absolute"}}
             source={

@@ -16,6 +16,8 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 var HashMap = require('hashmap');
 
 import HelpButton from '../components/HelpButton';
+import NavBar from '../components/NavBar';
+
 
 const allPlayers = [
   {name: "Julia", image: require("../assets/juliasIphoneAirdrop.png"), highlightedImage: require("../assets/juliasIphoneHighlighted.png")},
@@ -99,6 +101,7 @@ export default class AddPlayerScreen extends React.Component {
     const navigation = this.props.navigation;
     return (
       <View style={styles.container}>
+        <NavBar navigation={navigation} page={"AddPlayers"} mode={""} category={""} playersOutOfGame={""} playersInGame={""}/>
            <View style={styles.welcomeContainer}>
               <ImageBackground style={{height: 650, width: 430, position: "absolute"}}
                 source={

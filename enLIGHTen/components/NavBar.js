@@ -7,7 +7,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button
+  Button,
+  Alert
 } from "react-native";
 import { Footer } from 'native-base';
 
@@ -22,14 +23,81 @@ import Timer from './Timer';
 // questions(single): profile, home, settings, timer
 // every other page: profile, home, settings 
 
+function Home(props) {
+  if (props.page != "Mode") {
+      return (
+      <TouchableOpacity onPress={() => {
+        props.navigation.navigate('Mode')
+      }}>
+        <Image style={styles.homeStyle}
+          source={
+            require("../assets/homeIcon.png")
+      }/>
+      </TouchableOpacity>
+    );
+  } else {
+    return(<View></View>)
+  }
+}
+
+function Settings(props) {
+  if (props.page != "LetsPlay" && props.page != "Mode" && props.page != "Vibe" && props.page != "RecordThoughts") {
+      return (
+        <TouchableOpacity onPress={() => {
+          props.navigation.navigate('Categories', {mode: this.state.mode})
+        }}>
+          <Image style={styles.homeStyle}
+            source={
+              require("../assets/settingsIcon.png")
+        }/>
+    </TouchableOpacity>
+    );
+  } else {
+    return(<View></View>)
+  }
+}
+
+function TimerIcon(props) {
+  if (props.page == "Questions") {
+      return (
+       <Timer isRecordingsScreen={false}/>
+    );
+  } else {
+    return(<View></View>)
+  }
+}
+
+function AddPlayers(props) {
+  if (props.page == "Questions" && props.mode == "multi") {
+      return (
+      <TouchableOpacity onPress={() => {
+          props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
+      }}>
+        <Image style={styles.addImageStyle}
+          source={
+            require("../assets/addPlayersButton.png")
+        }/>
+     </TouchableOpacity>
+    );
+  } else {
+    return(<View></View>)
+  }
+}
 
 export default class NavBar extends React.Component {
+
   render() {
+    const page = this.props.page;
     const navigation = this.props.navigation;
+    const category = this.props.category;
+    const mode = this.props.navigation.mode;
+    const playersOutOfGame = this.props.playersOutOfGame;
+    const playersInGame = this.props.playersInGame;
     return (
       <View style={styles.container}>
         <View style={styles.profileContainer}>
           <TouchableOpacity onPress={() => {
+            Alert.alert("go to sachis profile");
             }}>
                 <Image style={styles.profile}
                   source={
@@ -38,31 +106,10 @@ export default class NavBar extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.iconsContainer}>
-              <Timer isRecordingsScreen={false}/>
-              <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
-            }}>
-                <Image style={styles.addImageStyle}
-                  source={
-                    require("../assets/addPlayersButton.png")
-              }/>
-           </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('Mode')
-            }}>
-                <Image style={styles.homeStyle}
-                  source={
-                    require("../assets/homeIcon.png")
-              }/>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {
-                this.props.navigation.navigate('Categories', {mode: this.state.mode})
-              }}>
-                <Image style={styles.homeStyle}
-                  source={
-                    require("../assets/settingsIcon.png")
-              }/>
-          </TouchableOpacity>
+          <TimerIcon page={page}/>
+          <AddPlayers page={page} mode={mode} navigation={navigation} category={category} playersOutOfGame={playersOutOfGame} playersInGame={playersInGame}/>
+           <Home page={page} navigation={navigation}/>
+           <Settings page={page} navigation={navigation}/>
           </View>
         </View>
     );

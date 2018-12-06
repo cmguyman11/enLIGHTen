@@ -13,6 +13,8 @@ import {
 import { Slider } from 'react-native-elements'
 import { WebBrowser } from "expo";
 import HelpButton from '../components/HelpButton'
+import NavBar from '../components/NavBar';
+
 
 
 export default class VibeScreen extends React.Component {
@@ -25,6 +27,7 @@ export default class VibeScreen extends React.Component {
     return (
       <View style={styles.container}>
       <View style={styles.container}>
+        <NavBar navigation={navigation} page={"Vibe"} mode={mode} category={category} playersOutOfGame={""} playersInGame={""}/>
             <View style={styles.welcomeContainer}>
           <ImageBackground
               style={{height: 750, width: 420}}

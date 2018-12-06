@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import { WebBrowser } from "expo";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import NavBar from '../components/NavBar';
+
 var HashMap = require('hashmap');
 
 import HelpButton from '../components/HelpButton';
@@ -106,6 +108,7 @@ export default class QuestionsScreen extends React.Component {
     this.state = { question: nextQuestion, category: category, mode: mode, map: map, playersInGame: playersInGame, playersOutOfGame: playersOutOfGame, highlightedPlayer: highlightedPlayer };
     return (
       <View style={styles.container}>
+        <NavBar navigation={navigation} page={"Questions"} mode={mode} category={category} playersOutOfGame={this.state.playersOutOfGame} playersInGame={this.state.playersInGame}/>
            <View style={styles.welcomeContainer}>
               <ImageBackground style={{height: 650, width: 430, position: "absolute"}}
                 source={

@@ -114,7 +114,7 @@ export default class QuestionsScreen extends React.Component {
                   require("../assets/questionsBackdrop.png")
                 }
               />
-              <NavBar navigation={navigation}/>
+        <NavBar navigation={navigation} page={"Questions"} mode={mode} category={category} playersOutOfGame={this.state.playersOutOfGame} playersInGame={this.state.playersInGame}/>
               <Players func={this._highlightPlayer.bind(this)} playersInGame={this.state.playersInGame} highlightedPlayer={this.state.highlightedPlayer}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>

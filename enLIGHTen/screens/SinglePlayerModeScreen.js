@@ -2,6 +2,8 @@ import React from 'react';
 import { WebBrowser } from "expo";
 import CategoriesScreen from './CategoriesScreen';
 import HelpButton from '../components/HelpButton'
+import NavBar from '../components/NavBar';
+
 import { Content } from 'native-base';
 
 
@@ -15,6 +17,7 @@ export default class SinglePlayerModeScreen extends React.Component {
     return (
       <View style={styles.container}>
       <View style={styles.container}>
+        <NavBar navigation={navigation} page={"RecordThoughts"} mode={""} category={""} playersOutOfGame={""} playersInGame={""}/>
         <View style={styles.imageContainer}>
          <Image style={{width: 300, height: 130, marginTop: 100}}
               source={
