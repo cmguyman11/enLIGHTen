@@ -44,10 +44,10 @@ export default class Timer extends React.Component {
   }
 
   startTimer() {
+    this.setState({ isCountingDown: true });
     if (this.timer == 0 && this.state.seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
-    this.setState({ isCountingDown: true });
   }
 
   countDown() {
@@ -62,6 +62,7 @@ export default class Timer extends React.Component {
     if (seconds == 0) { 
       clearInterval(this.timer);
       this.setState({ isCountingDown: false, seconds: 5 });
+      this.timer = 0;
       Alert.alert("Times up! Keep talking or click next question.");
     }
   }
