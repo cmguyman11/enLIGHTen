@@ -113,7 +113,7 @@ export default class QuestionsScreen extends React.Component {
                 }
               />
               <View style={styles.iconsContainer}>
-              <Timer/>
+              <Timer isRecordingsScreen={false}/>
               <TouchableOpacity onPress={() => {
                 this.props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
             }}>

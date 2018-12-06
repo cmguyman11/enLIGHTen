@@ -17,6 +17,8 @@ import {
   Animated
 } from "react-native";
 var HashMap = require('hashmap');
+import Timer from '../components/Timer';
+
 
 const statics = {
     acedemic: ["Is what we perceive reality or just a construct of our minds? Can our minds correctly interpret reality, or is it subjective?", "What is the purpose of art?", "What is the best way to explore human nature: psychology, philosophy, or biology?", "“Clear thinking requires courage rather than intelligence.” - Thomas Szasz. What do you think he’s saying? Do you agree?", "Did humans invent math, or did we discover it?", "What do you think are the benefits of capitalism? What are the downsides?", "Is what we perceive reality or just a construct of our minds? Can our minds correctly interpret reality, or is it subjective?" ],
@@ -29,7 +31,7 @@ function AdditionalNotes(props) {
   if (props.show) {
       return (
     <View>
-    <Image style={{width: "100%", height: 65, marginTop: 173}}
+    <Image style={{width: "100%", height: 65, marginTop: 180}}
       source={
         require("../assets/todaysThoughts.png")
       }/>
@@ -75,6 +77,7 @@ export default class RecordingScreen extends React.Component {
   }
 
   __showAnimation() {
+    this.timer.startTimer();
     var func = this.onComplete;
     Animated.timing(
       this.state.anim,
@@ -112,12 +115,9 @@ export default class RecordingScreen extends React.Component {
           />
           <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
           <View>
-           <TouchableOpacity style={{marginTop: 20, marginLeft: 300}} onPress={this._saveResponse}>
-            <Image style={styles.addImageStyle}
-              source={
-                require("../assets/saveIcon.png")
-              }/>
-          </TouchableOpacity>
+           <View style={{marginTop: 20, marginLeft: 180}}>
+            <Timer style={styles.timer} isRecordingsScreen={true} ref={(timer) => { this.timer = timer; }} />
+          </View>
           <View style={{height: 150, marginTop: 30}}>
             <ImageBackground style={{height: 120}}
               source={
@@ -159,6 +159,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     alignItems: "stretch",
+  },
+  timer: {
+
   },
   welcomeContainer: {
     flex: 1,
