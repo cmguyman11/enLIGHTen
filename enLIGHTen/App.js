@@ -17,6 +17,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import HelpScreen from './screens/HelpScreen';
 import VibeScreen from './screens/VibeScreen';
 import QuestionsScreen from './screens/QuestionsScreen';
+import SinglePlayerQuestionsScreen from './screens/SinglePlayerQuestionsScreen';
 import AddPlayersScreen from './screens/AddPlayersScreen';
 
 import HelpButton from './components/HelpButton';
@@ -68,6 +69,9 @@ const AppNavigator = createStackNavigator({
   },
   SinglePlayerMode: {
     screen: SinglePlayerModeScreen
+  },
+  SinglePlayerQuestions: {
+    screen: SinglePlayerQuestionsScreen
   },
   initialRouteName: "Home"
 });
