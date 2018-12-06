@@ -32,7 +32,7 @@ export default class RecordingScreen extends React.Component {
     super(props);
     this._nextQuestion = this._nextQuestion.bind(this);
     this.__showAnimation = this.__showAnimation.bind(this);
-    this.__endAnimation = this.__endAnimation.bind(this);
+    this.onComplete = this.onComplete.bind(this);
     const category = this.props.navigation.state.params.category;
     var map = new HashMap();
     map.set("acedemic", statics.acedemic);
@@ -61,18 +61,26 @@ export default class RecordingScreen extends React.Component {
   }
 
   __showAnimation() {
+    var func = this.onComplete;
     Animated.timing(
       this.state.anim,
       {
         toValue: 400,
         duration: 4000,
       }
-    ).start(this._endAnimation);  
+    ).start(func);
   }
 
-  __endAnimation() {
-    Alert.alert("animation over");
-    this.setState(previousState => ({ anim : 1}));
+  onComplete(finished) {
+    if (finished) {
+    Animated.timing(
+      this.state.anim,
+      {
+        toValue: 1,
+        duration: 1,
+      }
+    ).start();
+    }
   }
 
   render() {
