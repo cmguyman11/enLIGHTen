@@ -19,6 +19,8 @@ import VibeScreen from './screens/VibeScreen';
 import QuestionsScreen from './screens/QuestionsScreen';
 import SinglePlayerQuestionsScreen from './screens/SinglePlayerQuestionsScreen';
 import AddPlayersScreen from './screens/AddPlayersScreen';
+import NotepadScreen from './screens/NotepadScreen';
+
 
 import HelpButton from './components/HelpButton';
 
@@ -72,6 +74,9 @@ const AppNavigator = createStackNavigator({
   },
   SinglePlayerQuestions: {
     screen: SinglePlayerQuestionsScreen
+  },
+  Notepad: {
+    screen: NotepadScreen
   },
   initialRouteName: "Home"
 });

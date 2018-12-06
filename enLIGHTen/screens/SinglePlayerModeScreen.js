@@ -24,7 +24,7 @@ export default class SinglePlayerModeScreen extends React.Component {
           </View>
         <View style={styles.buttonContiner}>
         <TouchableOpacity onPress={() => {
-          this.props.navigation.navigate('Categories', {mode: "single"})
+          this.props.navigation.navigate('Categories', {mode: "single", function: "notepad"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>notepad</Text>
@@ -32,14 +32,14 @@ export default class SinglePlayerModeScreen extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {
-            this.props.navigation.navigate('Categories', {mode: "single"})
+            this.props.navigation.navigate('Categories', {mode: "single", function: "voice"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>voice memo</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {
-            this.props.navigation.navigate('Categories', {mode: "single"})
+            this.props.navigation.navigate('Categories', {mode: "single", function: "questions"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>just the questions!</Text>

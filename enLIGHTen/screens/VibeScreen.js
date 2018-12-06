@@ -21,6 +21,7 @@ export default class VibeScreen extends React.Component {
       const value = 0.3;
       const category = navigation.state.params.category;
       const mode = navigation.state.params.mode;
+      const func = navigation.state.params.function;
     return (
       <View style={styles.container}>
       <View style={styles.container}>
@@ -42,8 +43,12 @@ export default class VibeScreen extends React.Component {
       <TouchableOpacity onPress={() => {
               if (mode == "multi") {
                   this.props.navigation.navigate('Questions', {mode: mode, category: category, playersInGame:["Sachi"], playersOutOfGame:["Julia", "Cate"], highlightedPlayer: "Sachi"})
-              } else {
+              } else if (func == "questions") {
                   this.props.navigation.navigate('SinglePlayerQuestions', {mode: mode, category: category, playersInGame:["Sachi"], playersOutOfGame:["Julia", "Cate"], highlightedPlayer: "Sachi"})
+              } else if (func == "voice") {
+
+              } else if (func == "notepad") {
+                this.props.navigation.navigate('Notepad');
               }
             }}>
             <Image style={{height: 20, width: 50, marginLeft: 335, marginBottom: 73}}

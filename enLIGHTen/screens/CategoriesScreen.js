@@ -9,6 +9,7 @@ export default class CategoriesScreen extends React.Component {
   render() {
     const navigation = this.props.navigation;
     const mode = navigation.state.params.mode;
+    const func = navigation.state.params.function;
     return (
       <View style={styles.container}>
       <View style={styles.container}>
@@ -21,7 +22,7 @@ export default class CategoriesScreen extends React.Component {
           </View>
         <View style={styles.buttonContiner}>
         <TouchableOpacity onPress={() => {
-            this.props.navigation.navigate('Vibes', {mode: mode, category: "acedemic"})
+            this.props.navigation.navigate('Vibes', {mode: mode, function: func, category: "acedemic"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>acedemic</Text>
@@ -29,7 +30,7 @@ export default class CategoriesScreen extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {
-            this.props.navigation.navigate('Vibes', {mode: mode, category: "people"})
+            this.props.navigation.navigate('Vibes', {mode: mode, function: func, category: "people"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>people</Text>
@@ -37,7 +38,7 @@ export default class CategoriesScreen extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {
-            this.props.navigation.navigate('Vibes', {mode: mode, category: "funny"})
+            this.props.navigation.navigate('Vibes', {mode: mode, function: func, category: "funny"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>funny stuff</Text>
@@ -45,7 +46,7 @@ export default class CategoriesScreen extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {
-            this.props.navigation.navigate('Vibes', {mode: mode, category: "surprise"})
+            this.props.navigation.navigate('Vibes', {mode: mode, function: func, category: "surprise"})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>surprise me</Text>
