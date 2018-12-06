@@ -62,7 +62,7 @@ export default class NotepadScreen extends React.Component {
           <TouchableOpacity style={styles.welcomeContainer} onPress={() => {
 
             }}>
-            <Image style={{height: 600, width: 430}}
+            <Image style={{height: 400, width: 300, marginTop: 180, marginLeft: 50}}
               source={
                 require("../assets/notepad.png")
               }
