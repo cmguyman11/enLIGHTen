@@ -25,6 +25,20 @@ const statics = {
     surprise: ["Do you think Aliens exist? If so, why haven’t they contacted us? If not, why?", "What do you think happens after you die?", "Is what we perceive reality or just a construct of our minds? Can our minds correctly interpret reality, or is it subjective?", "What causes beautiful sunsets? What’s the best sunset you’ve seen?", "What do dogs think about?", "Try to describe a new color.", ],
 }
 
+function AdditionalNotes(props) {
+  if (props.show) {
+      return (
+    <View>
+    <Image style={{width: "100%", height: 65, marginTop: 173}}
+      source={
+        require("../assets/todaysThoughts.png")
+      }/>
+  </View>
+  );
+  } else {
+    return (<View></View>);
+  }
+}
 export default class RecordingScreen extends React.Component {
 
 
@@ -41,7 +55,7 @@ export default class RecordingScreen extends React.Component {
     map.set("surprise", statics.surprise);
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
-    this.state = { question: nextQuestion, category: category, map: map, text: "", anim: new Animated.Value(1)};
+    this.state = { question: nextQuestion, category: category, map: map, text: "", anim: new Animated.Value(1), recordedNote: false};
   }
 
   animationState = {
@@ -80,6 +94,7 @@ export default class RecordingScreen extends React.Component {
         duration: 1,
       }
     ).start();
+    this.setState(previousState => ({ recordedNote: true}));
     }
   }
 
@@ -121,6 +136,7 @@ export default class RecordingScreen extends React.Component {
           </TouchableOpacity>
         </View>
          </View>
+         <AdditionalNotes show={this.state.recordedNote}/>
           <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
             <Image style={styles.nextImageStyle}
               source={
