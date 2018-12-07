@@ -102,7 +102,7 @@ export default class NavBar extends React.Component {
       <View style={styles.container}>
         <View style={styles.profileContainer}>
           <TouchableOpacity onPress={() => {
-            Alert.alert("go to sachis profile");
+              this.props.navigation.navigate('Profile')
             }}>
                 <Image style={styles.profile}
                   source={
