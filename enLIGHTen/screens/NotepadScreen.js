@@ -130,7 +130,7 @@ export default class NotepadScreen extends React.Component {
                 height: 600,
                 width: 300,
                 borderWidth: 0,
-                marginTop: 50,
+                marginTop: 70,
                 marginLeft: 50
               }}
               onChangeText={text => this.setState({ text })}
