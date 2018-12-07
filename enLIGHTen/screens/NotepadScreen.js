@@ -60,6 +60,7 @@ export default class NotepadScreen extends React.Component {
   constructor(props) {
     super(props);
     this._nextQuestion = this._nextQuestion.bind(this);
+    this._saveResponse = this._saveResponse.bind(this);
     const category = this.props.navigation.state.params.category;
     const existingQuestion = this.props.navigation.state.params
       .existingQuestion;
@@ -99,6 +100,7 @@ export default class NotepadScreen extends React.Component {
 
   _saveResponse() {
     Alert.alert("Response saved!");
+    this.props.navigation.navigate("SavedNotes")
   }
 
   render() {
