@@ -99,8 +99,10 @@ export default class RecordingScreen extends React.Component {
         duration: 1,
       }
     ).start();
-    if (this.state.newRecording) Alert.alert("Response saved as \"Todays Thoughts\"!");
-    this.setState(previousState => ({ recordedNote: true}));
+    if (this.state.newRecording)  {
+      Alert.alert("Response saved as \"Todays Thoughts\"!");
+      this.setState(previousState => ({ recordedNote: true}));
+    }
     }
   }
 
