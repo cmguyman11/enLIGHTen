@@ -41,11 +41,15 @@ function Home(props) {
 }
 
 function Settings(props) {
-  var shouldShowBecauseSingle = (props.mode == "single" && props.page)
-  if (props.page != "Category" && props.page != "Mode" && props.page != "Vibe" && props.page != "RecordThoughts") {
+  var shouldShowBecauseSingle = (props.mode == "single" && props.page == "Category") || (props.mode == "single" && props.page == "Vibe")
+  if (shouldShowBecauseSingle || (props.page != "Category" && props.page != "Mode" && props.page != "Vibe" && props.page != "RecordThoughts")) {
       return (
         <TouchableOpacity onPress={() => {
-          props.navigation.navigate('Categories', {mode: props.mode})
+          if (shouldShowBecauseSingle) {
+            props.navigation.navigate('SinglePlayerMode');
+          } else {
+            props.navigation.navigate('Categories', {mode: props.mode});
+          }
         }}>
           <Image style={styles.homeStyle}
             source={
@@ -69,7 +73,6 @@ function TimerIcon(props) {
 }
 
 function AddPlayers(props) {
-  console.log("mode " + props.mode);
   if (props.page == "Questions" && props.mode == "multi") {
       return (
       <TouchableOpacity onPress={() => {
