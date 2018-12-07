@@ -25,15 +25,37 @@ import VibeScreen from "./VibeScreen";
 
 let fakePreviews = [
   {
-    title: "Question Example",
+    title: "What's your biggest fear",
     preview: "I'm not sure what to think about this question..."
   },
-  { title: "Question Example", preview: "Hello. This is Sachi" },
-  { title: "Question Example", preview: "Hello. This is Sachi" },
-  { title: "Question Example", preview: "Hello. This is Sachi" },
-  { title: "Question Example", preview: "Hello. This is Sachi" },
-  { title: "Question Example", preview: "Hello. This is Sachi" },
-  { title: "Question Example", preview: "Hello. This is Sachi" }
+  {
+    title: "If people evolved from monkeys, why do we still have monkeys?",
+    preview:
+      "This question really makes me think about our ancestors. I heard somewhere that we share 93% of our dna profile with the Rhesus monkey. It's very weird to think that just 7% separates my life from his. What a strange world."
+  },
+  {
+    title: "Can people change?",
+    preview:
+      "Absolutely. I used to be very afraid of swimming, and it really carried over into other parts of my life. I would cancel trips and avoid gatherings where I would be around water..."
+  },
+  {
+    title: "What is one thing you would want to change about yourself?",
+    preview:
+      "If I had the option, I don't think I would really change anything... I really enjoy who I am, and all the bad parts of me have served to teach me lessons..."
+  },
+  {
+    title: "What is your biggest regret?",
+    preview: "I want to come back to this question later..."
+  },
+  {
+    title:
+      "Can two people ever really know eachother as deeply as one can know themselves?",
+    preview: "Hmm.. I would say no, except I wish the answer was yes..."
+  },
+  {
+    title: "Do you think the human race is evolving morally?",
+    preview: "Save for later. Bring up with dad at dinner on Monday"
+  }
 ];
 
 export default class CategoriesScreen extends React.Component {
@@ -66,6 +88,15 @@ export default class CategoriesScreen extends React.Component {
     return (
       <Container>
         <Text style={styles.headerText}>Saved Notes</Text>
+        {/* <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate("Notepad", {
+              category: "acedemic"
+            });
+          }}
+        >
+          <Icon name="ios-create" />
+        </TouchableOpacity> */}
         <Content>
           <List>
             {fakePreviews.map(entry =>
