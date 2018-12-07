@@ -21,7 +21,7 @@ export default class ProfileScreen extends React.Component {
           </View>
         <View style={styles.buttonContiner}>
         <TouchableOpacity onPress={() => {
-            navigation.navigate('Notepad', {mode: "single", function: "notepad", category: "surprise"})
+            navigation.navigate('SavedNotes', {})
             }}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>my notes</Text>
