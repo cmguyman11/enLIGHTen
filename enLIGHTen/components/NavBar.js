@@ -119,7 +119,7 @@ export default class NavBar extends React.Component {
         <View style={styles.profileContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("SavedNotes", { mode: mode });
+              this.props.navigation.navigate("Profile");
             }}
           >
             <Image

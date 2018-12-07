@@ -21,7 +21,9 @@ import QuestionsScreen from "./screens/QuestionsScreen";
 import AddPlayersScreen from "./screens/AddPlayersScreen";
 import NotepadScreen from "./screens/NotepadScreen";
 import RecordingScreen from "./screens/RecordingScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 import SavedNotesScreen from "./screens/SavedNotes";
+
 import HelpButton from "./components/HelpButton";
 
 class HomeScreen extends React.Component {
@@ -79,6 +81,9 @@ const AppNavigator = createStackNavigator({
   },
   Recording: {
     screen: RecordingScreen
+  },
+  Profile: {
+    screen: ProfileScreen
   },
   initialRouteName: "Home"
 });
