@@ -125,6 +125,27 @@ function NewNote(props) {
   }
 }
 
+function SaveNote(props) {
+  const category = props.category;
+  if (props.page == "Notepad") {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+        Alert.alert("Response saved!");
+        props.navigation.navigate("SavedNotes", {category: category })
+      }}
+      >
+        <Image
+          style={styles.addImageStyle}
+          source={require("../assets/saveIcon.png")}
+        />
+      </TouchableOpacity>
+    );
+  } else {
+    return <View />;
+  }
+}
+
 export default class NavBar extends React.Component {
   render() {
     const page = this.props.page;
@@ -148,7 +169,8 @@ export default class NavBar extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.iconsContainer}>
-          <NewNote page={page} navigation={navigation}/>
+          <NewNote page={page} navigation={navigation} category={category}/>
+          <SaveNote page={page} navigation={navigation} category={category}/>
           <TimerIcon page={page} />
           <AddPlayers
             page={page}

@@ -125,15 +125,6 @@ export default class NotepadScreen extends React.Component {
             <Text style={styles.text}>{this.state.question}</Text>
           </View>
           <View>
-            <TouchableOpacity
-              style={{ marginTop: 20, marginLeft: 300 }}
-              onPress={this._saveResponse}
-            >
-              <Image
-                style={styles.addImageStyle}
-                source={require("../assets/saveIcon.png")}
-              />
-            </TouchableOpacity>
             <TextInput
               style={{
                 height: 600,
