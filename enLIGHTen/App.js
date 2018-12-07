@@ -11,37 +11,36 @@ import {
 } from "react-native";
 import { WebBrowser } from "expo";
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import ModeScreen from './screens/ModeScreen';
-import SinglePlayerModeScreen from './screens/SinglePlayerModeScreen';
-import CategoriesScreen from './screens/CategoriesScreen';
-import HelpScreen from './screens/HelpScreen';
-import VibeScreen from './screens/VibeScreen';
-import QuestionsScreen from './screens/QuestionsScreen';
-import AddPlayersScreen from './screens/AddPlayersScreen';
-import NotepadScreen from './screens/NotepadScreen';
-import RecordingScreen from './screens/RecordingScreen';
 
-
-import HelpButton from './components/HelpButton';
-
+import ModeScreen from "./screens/ModeScreen";
+import SinglePlayerModeScreen from "./screens/SinglePlayerModeScreen";
+import CategoriesScreen from "./screens/CategoriesScreen";
+import HelpScreen from "./screens/HelpScreen";
+import VibeScreen from "./screens/VibeScreen";
+import QuestionsScreen from "./screens/QuestionsScreen";
+import AddPlayersScreen from "./screens/AddPlayersScreen";
+import NotepadScreen from "./screens/NotepadScreen";
+import RecordingScreen from "./screens/RecordingScreen";
+import SavedNotesScreen from "./screens/SavedNotes";
+import HelpButton from "./components/HelpButton";
 
 class HomeScreen extends React.Component {
-
   render() {
     const navigation = this.props.navigation;
     return (
       <View style={styles.container}>
-
-           <TouchableOpacity style={styles.welcomeContainer} onPress={() => {
-              this.props.navigation.navigate('Mode')
-            }}>
-            <Image style={{height: 750, width: 430}}
-              source={
-                require("./assets/clouds.png")
-              }
-            />
-            </TouchableOpacity>
-          <HelpButton navigation={navigation}/>
+        <TouchableOpacity
+          style={styles.welcomeContainer}
+          onPress={() => {
+            this.props.navigation.navigate("Mode");
+          }}
+        >
+          <Image
+            style={{ height: 750, width: 430 }}
+            source={require("./assets/clouds.png")}
+          />
+        </TouchableOpacity>
+        <HelpButton navigation={navigation} />
       </View>
     );
   }
@@ -69,6 +68,9 @@ const AppNavigator = createStackNavigator({
   AddPlayers: {
     screen: AddPlayersScreen
   },
+  SavedNotes: {
+    screen: SavedNotesScreen
+  },
   SinglePlayerMode: {
     screen: SinglePlayerModeScreen
   },
@@ -89,19 +91,16 @@ export default class App extends React.Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white"
   },
-  contentContainer: {
-  },
-  welcomeContainer: {
-  },
+  contentContainer: {},
+  welcomeContainer: {},
   welcomeImage: {
     flex: 1,
     resizeMode: "contain",
     marginTop: 3,
     marginLeft: -10
-  },
+  }
 });
