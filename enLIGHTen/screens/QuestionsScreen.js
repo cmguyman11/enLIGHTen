@@ -136,12 +136,11 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     display: "flex",
     flex: 1,
-    alignItems: "stretch",
   },
   welcomeContainer: {
     flex: 1,
     height: "100%",
-    width:"100%"
+    width:"100%",
   },
   questionsContainer: {
     display: "flex",
@@ -190,7 +189,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 10,
-    marginTop: 90,
+    marginTop: 80,
   },
   iconsContainer: {
     display: "flex",

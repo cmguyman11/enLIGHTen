@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   },
   nextContainer: {
     position: "absolute",
-    marginTop: 700,
+    marginTop: 650,
     marginRight: 25
   },
   addPlayerContainer: {

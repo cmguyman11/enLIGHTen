@@ -44,10 +44,8 @@ export default class VibeScreen extends React.Component {
           thumbTintColor="white"/>
       </View>
       <TouchableOpacity onPress={() => {
-              if (mode == "multi") {
+              if (mode == "multi" || func == "questions") {
                   this.props.navigation.navigate('Questions', {mode: mode, category: category, playersInGame:["Sachi"], playersOutOfGame:["Julia", "Cate"], highlightedPlayer: "Sachi"})
-              } else if (func == "questions") {
-                  this.props.navigation.navigate('SinglePlayerQuestions', {mode: mode, category: category, playersInGame:["Sachi"], playersOutOfGame:["Julia", "Cate"], highlightedPlayer: "Sachi"})
               } else if (func == "voice") {
                     this.props.navigation.navigate('Recording', {category: category});
               } else if (func == "notepad") {

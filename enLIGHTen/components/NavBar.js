@@ -41,6 +41,7 @@ function Home(props) {
 }
 
 function Settings(props) {
+  var shouldShowBecauseSingle = (props.mode == "single" && props.page)
   if (props.page != "Category" && props.page != "Mode" && props.page != "Vibe" && props.page != "RecordThoughts") {
       return (
         <TouchableOpacity onPress={() => {
@@ -120,10 +121,12 @@ export default class NavBar extends React.Component {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    width: "100%",
+    width: 450,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    borderWidth: 1,
+    borderColor: "black"
   },
   iconsContainer: {
     display: "flex",

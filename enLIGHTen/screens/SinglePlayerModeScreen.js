@@ -19,7 +19,7 @@ export default class SinglePlayerModeScreen extends React.Component {
       <View style={styles.container}>
         <NavBar navigation={navigation} page={"RecordThoughts"} mode={""} category={""} playersOutOfGame={""} playersInGame={""}/>
         <View style={styles.imageContainer}>
-         <Image style={{width: 300, height: 130, marginTop: 100}}
+         <Image style={{width: 300, height: 130, marginTop: 75}}
               source={
                 require("../assets/recordThoughts.png")
               }
