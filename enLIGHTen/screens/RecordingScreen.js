@@ -59,7 +59,7 @@ export default class RecordingScreen extends React.Component {
     map.set("surprise", statics.surprise);
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
-    this.state = { question: nextQuestion, category: category, map: map, text: "", anim: new Animated.Value(1), recordedNote: false};
+    this.state = { question: nextQuestion, category: category, map: map, text: "", anim: new Animated.Value(1), recordedNote: false, newRecording: true};
   }
 
   animationState = {
@@ -78,9 +78,10 @@ export default class RecordingScreen extends React.Component {
   	Alert.alert();
   }
 
-  __showAnimation() {
+  __showAnimation(newRecording) {
     this.timer.startTimer();
     var func = this.onComplete;
+    this.setState(previousState => ({ newRecording : newRecording}));
     Animated.timing(
       this.state.anim,
       {
@@ -99,7 +100,7 @@ export default class RecordingScreen extends React.Component {
         duration: 1,
       }
     ).start();
-    Alert.alert("Response saved as \"Todays Thoughts\"!");
+    if (this.state.newRecording) Alert.alert("Response saved as \"Todays Thoughts\"!");
     this.setState(previousState => ({ recordedNote: true}));
     }
   }
@@ -132,7 +133,9 @@ export default class RecordingScreen extends React.Component {
                   require("../assets/blueLine.png")
                 }/>
               </Animated.View>
-            <TouchableOpacity style={{marginTop: 10, marginLeft: 180}} onPress={this.__showAnimation}>
+            <TouchableOpacity style={{marginTop: 10, marginLeft: 180}} onPress={() => {
+              this.__showAnimation(true)
+            }}>
             <Image style={{width: 50, height: 50}}
               source={
                 require("../assets/recordIcon.png")
@@ -140,6 +143,24 @@ export default class RecordingScreen extends React.Component {
           </TouchableOpacity>
         </View>
          </View>
+          <TouchableOpacity onPress={() => {
+              this.__showAnimation(false)
+            }}>
+            <Image style={{width: 50, height: 40, marginLeft: 330, marginTop: 80}}
+              source={
+                require("../assets/playPause.png")
+              }/>
+          </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => {
+              this.__showAnimation(false)
+            }}>
+            <Image style={{width: 50, height: 40, marginLeft: 330, marginTop: 30}}
+              source={
+                require("../assets/playPause.png")
+              }/>
+          </TouchableOpacity>
+
          <AdditionalNotes show={this.state.recordedNote}/>
           <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
             <Image style={styles.nextImageStyle}
