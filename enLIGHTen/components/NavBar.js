@@ -121,7 +121,7 @@ export default class NavBar extends React.Component {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    width: 450,
+    width: 430,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -130,13 +130,15 @@ const styles = StyleSheet.create({
   },
   iconsContainer: {
     display: "flex",
+    flexDirection: "row",
     flexWrap: "wrap",
     height: 50,
-    justifyContent: "center",
+    width: "80%",
+    justifyContent: "flex-end",
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 10,
-    marginLeft: 150,
+    marginRight: 10,
   },
   homeStyle: {
     height: 35,
@@ -148,6 +150,10 @@ const styles = StyleSheet.create({
     width: 50, 
   },
   profileContainer: {
+    width: "20%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   profile: {
     left: 0,
