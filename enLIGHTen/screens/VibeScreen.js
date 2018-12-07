@@ -30,7 +30,7 @@ export default class VibeScreen extends React.Component {
         <NavBar navigation={navigation} page={"Vibe"} mode={mode} category={category} playersOutOfGame={""} playersInGame={""}/>
             <View style={styles.welcomeContainer}>
           <ImageBackground
-              style={{height: 750, width: 420}}
+              style={{height: 700, width: 420}}
               source={
                 require("../assets/vibeScreen.png")
               }
