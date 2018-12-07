@@ -33,7 +33,7 @@ function AdditionalNotes(props) {
   if (props.show) {
       return (
     <View>
-    <Image style={{width: "100%", height: 65, marginTop: 180}}
+    <Image style={{width: "100%", height: 65}}
       source={
         require("../assets/todaysThoughts.png")
       }/>
@@ -81,7 +81,6 @@ export default class RecordingScreen extends React.Component {
   __showAnimation(newRecording) {
     this.timer.startTimer();
     var func = this.onComplete;
-    this.setState(previousState => ({ newRecording : newRecording}));
     Animated.timing(
       this.state.anim,
       {
@@ -134,7 +133,8 @@ export default class RecordingScreen extends React.Component {
                 }/>
               </Animated.View>
             <TouchableOpacity style={{marginTop: 10, marginLeft: 180}} onPress={() => {
-              this.__showAnimation(true)
+              this.setState(previousState => ({ newRecording : true}));
+              this.__showAnimation();
             }}>
             <Image style={{width: 50, height: 50}}
               source={
@@ -144,7 +144,8 @@ export default class RecordingScreen extends React.Component {
         </View>
          </View>
           <TouchableOpacity onPress={() => {
-              this.__showAnimation(false)
+              this.setState(previousState => ({ newRecording : false}));
+              this.__showAnimation()
             }}>
             <Image style={{width: 50, height: 40, marginLeft: 330, marginTop: 80}}
               source={
@@ -153,14 +154,14 @@ export default class RecordingScreen extends React.Component {
           </TouchableOpacity>
 
             <TouchableOpacity onPress={() => {
-              this.__showAnimation(false)
+            this.setState(previousState => ({ newRecording : false}));
+              this.__showAnimation()
             }}>
             <Image style={{width: 50, height: 40, marginLeft: 330, marginTop: 30}}
               source={
                 require("../assets/playPause.png")
               }/>
           </TouchableOpacity>
-
          <AdditionalNotes show={this.state.recordedNote}/>
           <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>
             <Image style={styles.nextImageStyle}
