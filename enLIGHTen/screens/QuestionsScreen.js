@@ -97,7 +97,6 @@ export default class QuestionsScreen extends React.Component {
     const playersOutOfGame = this.props.navigation.state.params.playersOutOfGame;
     const playersInGame = this.props.navigation.state.params.playersInGame;
     const highlightedPlayer = (this.state.highlightedPlayer != null) ? this.state.highlightedPlayer : this.props.navigation.state.params.highlightedPlayer;
-    console.log(highlightedPlayer);
     var map = new HashMap();
     map.set("acedemic", statics.acedemic);
     map.set("people", statics.people);
@@ -106,6 +105,7 @@ export default class QuestionsScreen extends React.Component {
     var questions = map.get(category);
     var nextQuestion = questions[Math.floor(Math.random()*questions.length)];
     this.state = { question: nextQuestion, category: category, mode: mode, map: map, playersInGame: playersInGame, playersOutOfGame: playersOutOfGame, highlightedPlayer: highlightedPlayer };
+    console.log("in questions: mode " + mode);
     return (
       <View style={styles.container}>
            <View style={styles.welcomeContainer}>
@@ -114,7 +114,7 @@ export default class QuestionsScreen extends React.Component {
                   require("../assets/questionsBackdrop.png")
                 }
               />
-        <NavBar navigation={navigation} page={"Questions"} mode={mode} category={category} playersOutOfGame={this.state.playersOutOfGame} playersInGame={this.state.playersInGame}/>
+        <NavBar navigation={navigation} page={"Questions"} mode={this.state.mode} category={this.state.category} playersOutOfGame={this.state.playersOutOfGame} playersInGame={this.state.playersInGame}/>
               <Players func={this._highlightPlayer.bind(this)} playersInGame={this.state.playersInGame} highlightedPlayer={this.state.highlightedPlayer}/>
               <View style={styles.questionsContainer}><Text style={styles.text}>{this.state.question}</Text></View>
               <TouchableOpacity style={styles.nextContainer} onPress={this._nextQuestion}>

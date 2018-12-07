@@ -101,7 +101,7 @@ export default class AddPlayerScreen extends React.Component {
     const navigation = this.props.navigation;
     return (
       <View style={styles.container}>
-        <NavBar navigation={navigation} page={"AddPlayers"} mode={""} category={""} playersOutOfGame={""} playersInGame={""}/>
+           <NavBar navigation={navigation} page={"AddPlayers"} mode={""} category={""} playersOutOfGame={""} playersInGame={""}/>
            <View style={styles.welcomeContainer}>
               <ImageBackground style={{height: 650, width: 430, position: "absolute"}}
                 source={
@@ -192,13 +192,13 @@ const styles = StyleSheet.create({
   },
   nextContainer: {
     position: "absolute",
-    marginTop: 700
+    marginTop: 650
   },
   imageStyle: {
     height: 20, 
     width: 50, 
     marginLeft: 300, 
-    marginBottom: 73
+    marginBottom: 200,
   },
   playerIconStyle: {
     height: 100, 

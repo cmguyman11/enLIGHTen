@@ -68,10 +68,11 @@ function TimerIcon(props) {
 }
 
 function AddPlayers(props) {
+  console.log("mode " + props.mode);
   if (props.page == "Questions" && props.mode == "multi") {
       return (
       <TouchableOpacity onPress={() => {
-          props.navigation.navigate('AddPlayers', {mode: this.state.mode, category: this.state.category, playersOutOfGame: this.state.playersOutOfGame, playersInGame: this.state.playersInGame})
+          props.navigation.navigate('AddPlayers', {mode: props.mode, category: props.category, playersOutOfGame: props.playersOutOfGame, playersInGame: props.playersInGame})
       }}>
         <Image style={styles.addImageStyle}
           source={
@@ -90,7 +91,7 @@ export default class NavBar extends React.Component {
     const page = this.props.page;
     const navigation = this.props.navigation;
     const category = this.props.category;
-    const mode = this.props.navigation.mode;
+    const mode = this.props.mode;
     const playersOutOfGame = this.props.playersOutOfGame;
     const playersInGame = this.props.playersInGame;
     return (
