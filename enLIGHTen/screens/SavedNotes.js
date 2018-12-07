@@ -42,7 +42,11 @@ export default class CategoriesScreen extends React.Component {
       <ListItem itemHeader first>
         <TouchableOpacity
           onPress={() => {
-            this.props.navigation.navigate("Notepad", { category: "acedemic" });
+            this.props.navigation.navigate("Notepad", {
+              category: "acedemic",
+              existingQuestion: title,
+              existingText: preview
+            });
           }}
         >
           <Body>
