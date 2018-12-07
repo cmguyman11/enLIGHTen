@@ -88,15 +88,17 @@ export default class CategoriesScreen extends React.Component {
     return (
       <Container>
         <Text style={styles.headerText}>Saved Notes</Text>
-        {/* <TouchableOpacity
+        <TouchableOpacity
+          style={{marginLeft: 350 }}
           onPress={() => {
-            this.props.navigation.navigate("Notepad", {
-              category: "acedemic"
-            });
+            this.props.navigation.navigate("Notepad",  {category: "surprise"})
           }}
-        >
-          <Icon name="ios-create" />
-        </TouchableOpacity> */}
+          >
+          <Image
+            style={styles.addImageStyle}
+            source={require("../assets/newNoteIcon.png")}
+          />
+        </TouchableOpacity>
         <Content>
           <List>
             {fakePreviews.map(entry =>
@@ -117,5 +119,9 @@ const styles = StyleSheet.create({
   },
   date: {
     fontWeight: "normal"
-  }
+  },
+  addImageStyle: {
+    height: 40,
+    width: 40
+  },
 });
