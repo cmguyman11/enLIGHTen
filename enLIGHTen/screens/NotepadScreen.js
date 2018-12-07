@@ -105,13 +105,14 @@ export default class NotepadScreen extends React.Component {
 
   render() {
     const navigation = this.props.navigation;
+    const category = this.props.navigation.state.params.category;
     return (
       <View style={styles.container}>
         <NavBar
           navigation={navigation}
           page={"Notepad"}
-          mode={this.state.mode}
-          category={this.state.category}
+          mode={"single"}
+          category={category}
           playersOutOfGame={""}
           playersInGame={""}
         />

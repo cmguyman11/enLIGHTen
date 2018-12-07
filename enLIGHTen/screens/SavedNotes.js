@@ -85,8 +85,17 @@ export default class CategoriesScreen extends React.Component {
 
   render() {
     const navigation = this.props.navigation;
+    const category = this.props.navigation.state.params.category;
     return (
       <Container>
+        <NavBar
+          navigation={navigation}
+          page={"Notepad"}
+          mode={"single"}
+          category={category}
+          playersOutOfGame={""}
+          playersInGame={""}
+        />
         <Text style={styles.headerText}>Saved Notes</Text>
         <TouchableOpacity
           style={{marginLeft: 350 }}
@@ -106,6 +115,7 @@ export default class CategoriesScreen extends React.Component {
             )}
           </List>
         </Content>
+       <HelpButton navigation={navigation}/>
       </Container>
     );
   }
