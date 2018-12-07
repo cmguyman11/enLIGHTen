@@ -43,17 +43,24 @@ function Home(props) {
 }
 
 function Settings(props) {
-  var shouldShowBecauseSingle = props.mode == "single" && props.page;
+  var shouldShowBecauseSingle =
+    (props.mode == "single" && props.page == "Category") ||
+    (props.mode == "single" && props.page == "Vibe");
   if (
-    props.page != "Category" &&
-    props.page != "Mode" &&
-    props.page != "Vibe" &&
-    props.page != "RecordThoughts"
+    shouldShowBecauseSingle ||
+    (props.page != "Category" &&
+      props.page != "Mode" &&
+      props.page != "Vibe" &&
+      props.page != "RecordThoughts")
   ) {
     return (
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate("Categories", { mode: props.mode });
+          if (shouldShowBecauseSingle) {
+            props.navigation.navigate("SinglePlayerMode");
+          } else {
+            props.navigation.navigate("Categories", { mode: props.mode });
+          }
         }}
       >
         <Image
@@ -76,7 +83,6 @@ function TimerIcon(props) {
 }
 
 function AddPlayers(props) {
-  console.log("mode " + props.mode);
   if (props.page == "Questions" && props.mode == "multi") {
     return (
       <TouchableOpacity
@@ -143,22 +149,24 @@ export default class NavBar extends React.Component {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    width: 450,
+    width: 430,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "black"
+    borderColor: "grey"
   },
   iconsContainer: {
     display: "flex",
+    flexDirection: "row",
     flexWrap: "wrap",
     height: 50,
-    justifyContent: "center",
+    width: "80%",
+    justifyContent: "flex-end",
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 10,
-    marginLeft: 150
+    marginRight: 10
   },
   homeStyle: {
     height: 35,
@@ -168,6 +176,12 @@ const styles = StyleSheet.create({
   addImageStyle: {
     height: 50,
     width: 50
+  },
+  profileContainer: {
+    width: "20%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   profileContainer: {},
   profile: {
