@@ -90,24 +90,13 @@ export default class CategoriesScreen extends React.Component {
       <Container>
         <NavBar
           navigation={navigation}
-          page={"Notepad"}
+          page={"SavedNotes"}
           mode={"single"}
           category={category}
           playersOutOfGame={""}
           playersInGame={""}
         />
         <Text style={styles.headerText}>Saved Notes</Text>
-        <TouchableOpacity
-          style={{marginLeft: 350 }}
-          onPress={() => {
-            this.props.navigation.navigate("Notepad",  {category: "surprise"})
-          }}
-          >
-          <Image
-            style={styles.addImageStyle}
-            source={require("../assets/newNoteIcon.png")}
-          />
-        </TouchableOpacity>
         <Content>
           <List>
             {fakePreviews.map(entry =>
@@ -129,9 +118,5 @@ const styles = StyleSheet.create({
   },
   date: {
     fontWeight: "normal"
-  },
-  addImageStyle: {
-    height: 40,
-    width: 40
   },
 });

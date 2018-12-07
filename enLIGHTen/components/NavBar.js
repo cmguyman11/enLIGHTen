@@ -106,6 +106,25 @@ function AddPlayers(props) {
   }
 }
 
+function NewNote(props) {
+  if (props.page == "SavedNotes") {
+    return (
+      <TouchableOpacity
+      onPress={() => {
+        props.navigation.navigate("Notepad",  {category: "surprise"})
+      }}
+      >
+      <Image
+        style={styles.homeStyle}
+        source={require("../assets/newNoteIcon.png")}
+      />
+    </TouchableOpacity>
+    );
+  } else {
+    return <View />;
+  }
+}
+
 export default class NavBar extends React.Component {
   render() {
     const page = this.props.page;
@@ -129,6 +148,7 @@ export default class NavBar extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.iconsContainer}>
+          <NewNote page={page} navigation={navigation}/>
           <TimerIcon page={page} />
           <AddPlayers
             page={page}
